@@ -38,9 +38,11 @@
   text-decoration: none;
   color: #fff;
   padding: 10px 20px;
+  transition: opacity 0.3s linear;
 }
 
 .promo__link:hover {
+  opacity: 0.8;
 }
 
 .promo__logo {

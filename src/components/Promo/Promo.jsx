@@ -11,7 +11,7 @@ function Promo() {
         Листайте ниже, чтобы узнать больше про этот проект и его создателя.
       </p>
       <a className='promo__link' href='/about'>
-        Узнать Больше
+        Узнать больше
       </a>
       <img
         className='promo__logo'
