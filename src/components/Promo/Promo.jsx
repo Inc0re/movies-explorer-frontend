@@ -1,5 +1,4 @@
 import './Promo.css'
-import '../Section/Section.css'
 import planetImage from '../../images/web-planet.svg'
 
 function Promo() {

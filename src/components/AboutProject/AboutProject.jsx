@@ -1,5 +1,4 @@
 import './AboutProject.css'
-import '../Section/Section.css'
 
 function AboutProject() {
   return (

@@ -1,5 +1,5 @@
 import './Portfolio.css'
-import '../Section/Section.css'
+
 
 function Portfolio() {
   return (

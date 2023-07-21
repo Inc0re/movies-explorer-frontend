@@ -1,5 +1,4 @@
 import './AboutMe.css'
-import '../Section/Section.css'
 import userPhoto from '../../images/user-photo.jpg'
 
 function AboutMe() {

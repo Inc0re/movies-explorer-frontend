@@ -1,5 +1,4 @@
 import './Techs.css'
-import '../Section/Section.css'
 
 function Techs() {
   return (
