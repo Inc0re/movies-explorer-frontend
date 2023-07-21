@@ -1,19 +1,22 @@
+import { Link } from 'react-router-dom'
 import './Header.css'
 
 function Header() {
   return (
     <header className='header'>
-      <a href='/' className='header__logo'>Главная</a>
+      <Link to='/' className='header__logo'>
+        Главная
+      </Link>
       <nav className='header__links'>
-        <a href='/signup' className='header__link'>
+        <Link to='/signup' className='header__link'>
           Регистрация
-        </a>
-        <a
-          href='/signin'
+        </Link>
+        <Link
+          to='/signin'
           className='header__link header__link_type_green-button'
         >
           Войти
-        </a>
+        </Link>
       </nav>
     </header>
   )

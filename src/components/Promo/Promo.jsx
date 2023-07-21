@@ -1,5 +1,6 @@
 import './Promo.css'
 import planetImage from '../../images/web-planet.svg'
+import { Link } from 'react-router-dom'
 
 function Promo() {
   return (
@@ -10,9 +11,9 @@ function Promo() {
       <p className='promo__subtitle'>
         Листайте ниже, чтобы узнать больше про этот проект и его создателя.
       </p>
-      <a className='promo__link' href='/about'>
+      <Link className='promo__link' to='/movies'>
         Узнать больше
-      </a>
+      </Link>
       <img
         className='promo__logo'
         src={planetImage}
