@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './Header.css'
 
 function Header() {
+  const location = useLocation()
   return (
-    <header className='header'>
+    <header className={`header${location.pathname === '/' ? ' header_color_green' : ''}`}>
       <Link to='/' className='header__logo'>
         Главная
       </Link>
