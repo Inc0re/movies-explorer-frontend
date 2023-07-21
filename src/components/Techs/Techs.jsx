@@ -1,9 +1,10 @@
 import './Techs.css'
+import '../Section/Section.css'
 
 function Techs() {
   return (
-    <section className='techs'>
-      <h3 className='techs__title'>Технологии</h3>
+    <section className='techs section'>
+      <h3 className='techs__title section__title'>Технологии</h3>
       <p className='techs__highlight'>7 технологий</p>
       <p className='techs__text'>
         На курсе веб-разработки мы освоили технологии, которые применили в

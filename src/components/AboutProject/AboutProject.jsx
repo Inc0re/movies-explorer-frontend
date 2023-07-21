@@ -1,9 +1,10 @@
 import './AboutProject.css'
+import '../Section/Section.css'
 
 function AboutProject() {
   return (
-    <section className='about'>
-      <h2 className='about__title'>О проекте</h2>
+    <section className='about section'>
+      <h2 className='about__title section__title'>О проекте</h2>
       <div className='about__info'>
         <div className='about__column'>
           <h3 className='about__column-title'>

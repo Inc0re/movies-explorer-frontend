@@ -1,7 +1,7 @@
 .promo {
+  /* padding: 75px 5% 75px; */
   background-color: #073042;
   margin: 0;
-  padding: 75px 5% 75px;
   display: grid;
   grid-template-areas:
     'title logo'

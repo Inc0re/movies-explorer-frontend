@@ -1,18 +1,18 @@
 .about {
+  /* padding: 110px 5%; */
   background-color: #202020;
-  padding: 110px 5%;
   display: grid;
   grid-template-rows: repeat(4, auto);
 }
 
-.about__title {
+/* .about__title {
   margin: 0;
   font-size: 22px;
   font-weight: 400;
   color: #fff;
   padding-bottom: 23px;
   border-bottom: 1px solid #fff;
-}
+} */
 
 .about__info {
   display: grid;

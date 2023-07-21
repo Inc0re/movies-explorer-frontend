@@ -1,5 +1,5 @@
 .about-me {
-  padding: 110px 5% 50px;
+  /* padding: 110px 5% 50px; */
   display: grid;
   grid-template-areas:
     'title title'
@@ -11,12 +11,12 @@
 
 .about-me__title {
   grid-area: title;
-  margin: 0;
+  /* margin: 0;
   font-size: 22px;
   font-weight: 400;
   color: #fff;
   padding-bottom: 23px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #fff; */
 }
 
 .about-me__name {

@@ -1,18 +1,18 @@
 .techs {
+  /* padding: 100px 5%; */
   background-color: #272727;
-  padding: 100px 5%;
   display: grid;
   grid-template-rows: repeat(3, auto);
 }
 
-.techs__title {
+/* .techs__title {
   margin: 0;
   font-size: 22px;
   font-weight: 400;
   color: #fff;
   padding-bottom: 23px;
   border-bottom: 1px solid #fff;
-}
+} */
 
 .techs__highlight {
   margin: 90px auto 0;

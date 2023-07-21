@@ -1,9 +1,10 @@
 import './Promo.css'
+import '../Section/Section.css'
 import planetImage from '../../images/web-planet.svg'
 
 function Promo() {
   return (
-    <section className='promo'>
+    <section className='promo section'>
       <h1 className='promo__title'>
         Учебный проект студента факультета Веб&#8209;разработки.
       </h1>

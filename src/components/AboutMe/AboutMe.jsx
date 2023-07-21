@@ -1,10 +1,11 @@
 import './AboutMe.css'
+import '../Section/Section.css'
 import userPhoto from '../../images/user-photo.jpg'
 
 function AboutMe() {
   return (
-    <section className='about-me'>
-      <h3 className='about-me__title'>Студент</h3>
+    <section className='about-me section'>
+      <h3 className='about-me__title section__title'>Студент</h3>
       <p className='about-me__name'>Даниил</p>
       <p className='about-me__job'>Фронтенд-разработчик, 25 лет</p>
       <p className='about-me__description'>

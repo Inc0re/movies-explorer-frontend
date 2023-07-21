@@ -1,5 +1,5 @@
 .portfolio {
-  padding: 50px 5% 125px;
+  /* padding: 50px 5% 125px; */
   display: grid;
   grid-template-rows: repeat(2, auto);
 }
