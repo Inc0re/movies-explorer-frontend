@@ -1,6 +1,6 @@
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Pagination from '../Pagination/Pagination'
-import Preloader from '../Preloader/Preloader'
+// import Preloader from '../Preloader/Preloader'
 import SearchForm from '../SearchForm/SearchForm'
 import './Movies.css'
 
