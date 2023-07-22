@@ -73,3 +73,9 @@
 .movie-card__button_saved:hover {
   background-color: #313131;
 }
+
+.movie-card__button_remove {
+  background-image: url(../../images/cross-mark.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
