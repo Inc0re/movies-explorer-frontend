@@ -5,6 +5,7 @@ import Main from '../Main/Main'
 import Movies from '../Movies/Movies'
 // import Footer from '../Footer/Footer'
 import NotFound from '../NotFound/NotFound'
+import Register from '../Register/Register'
 import './App.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<FullPage children={<Main />} />} />
         <Route path='/movies' element={<FullPage children={<Movies />} />} />
+        <Route path='/signup' element={<Register />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
