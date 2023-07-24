@@ -16,7 +16,9 @@
   align-items: center;
   padding: 18px;
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 10px;
   justify-content: space-between;
 }
 
@@ -28,7 +30,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 240px;
 }
 
 .movie-card__length {
