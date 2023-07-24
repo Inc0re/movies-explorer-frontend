@@ -1,15 +1,7 @@
 import AuthForm from '../AuthForm/AuthForm'
 
-function Register({ handleRegister }) {
+function Login({ handleLogin }) {
   const fields = [
-    {
-      name: 'name',
-      type: 'text',
-      placeholder: 'Имя',
-      isRequired: true,
-      minLength: 2,
-      maxLength: 30,
-    },
     {
       name: 'email',
       type: 'email',
@@ -29,14 +21,14 @@ function Register({ handleRegister }) {
   ]
   return (
     <AuthForm
-      title='Добро пожаловать!'
-      btnText='Зарегистрироваться'
-      onSubmit={handleRegister}
-      type='register'
+      title='Рады видеть!'
+      btnText='Войти'
+      onSubmit={handleLogin}
+      type='login'
       fields={fields}
       error='Что-то пошло не так...'
     />
   )
 }
 
-export default Register
+export default Login

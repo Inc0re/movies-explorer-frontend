@@ -9,11 +9,11 @@ function Header() {
         Главная
       </Link>
       <nav className='header__links'>
-        <Link to='/signup' className='header__link'>
+        <Link to='/sign-up' className='header__link'>
           Регистрация
         </Link>
         <Link
-          to='/signin'
+          to='/sign-in'
           className='header__link header__link_type_green-button'
         >
           Войти

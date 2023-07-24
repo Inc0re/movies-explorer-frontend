@@ -3,6 +3,17 @@ import useForm from '../../hooks/useForm'
 import './AuthForm.css'
 
 function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
+  const params = type === 'register'
+    ? {
+      text: 'Уже зарегистрированы?',
+      linkText: 'Войти',
+      linkTo: '/sign-in',
+    }
+    : {
+      text: 'Ещё не зарегистрированы?',
+      linkText: 'Регистрация',
+      linkTo: '/sign-up',
+    }
   const { values, handleChange } = useForm({})
 
   function handleSubmit(e) {
@@ -12,7 +23,7 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
 
   return (
     <form className='auth-form' onSubmit={handleSubmit}>
-      <div className='header__logo' />
+      <Link to='/' className='header__logo' />
       <h2 className='auth-form__title'>{title}</h2>
       {fields.map(field => (
         <>
@@ -42,12 +53,10 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
         {btnText}
       </button>
       <div className='auth-form__redirect'>
-        {type === 'register'
-          ? 'Уже зарегистрированы?'
-          : 'Ещё не зарегистрированы?'}
+        {params.text}
         &nbsp;
-        <Link className='auth-form__link' to='/sign-in'>
-          {type === 'register' ? 'Войти' : 'Регистрация'}
+        <Link className='auth-form__link' to={params.linkTo}>
+          {params.linkText}
         </Link>
       </div>
     </form>
