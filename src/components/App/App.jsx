@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-// import Header from '../Header/Header'
-import FullPage from '../FullPage/FullPage'
+// import FullPage from '../FullPage/FullPage'
 import Main from '../Main/Main'
 import Movies from '../Movies/Movies'
 // import Footer from '../Footer/Footer'
@@ -8,22 +7,41 @@ import NotFound from '../NotFound/NotFound'
 import Register from '../Register/Register'
 import Login from '../Login/Login'
 import Profile from '../Profile/Profile'
-import './App.css'
 import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
+import './App.css'
 
 function App() {
   return (
     <div className='app'>
       <Routes>
-        <Route path='/' element={<FullPage children={<Main />} />} />
-        <Route path='/movies' element={<FullPage children={<Movies />} />} />
+        <Route
+          path='/'
+          element={
+            <>
+              <Header />
+              <Main />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path='/movies'
+          element={
+            <>
+              <Header loggedIn={true} />
+              <Movies />
+              <Footer />
+            </>
+          }
+        />
         <Route path='/sign-up' element={<Register />} />
         <Route path='/sign-in' element={<Login />} />
         <Route
           path='/profile'
           element={
             <>
-              <Header />
+              <Header loggedIn={true} />
               <Profile />
             </>
           }
