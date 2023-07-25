@@ -1,5 +1,6 @@
 .about {
-  /* padding: 110px 5%; */
+  padding-top: 112px;
+  padding-bottom: 111px;
   background-color: #202020;
   display: grid;
   grid-template-rows: repeat(4, auto);
@@ -17,7 +18,8 @@
 .about__info {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 70px 0 110px;
+  padding: 70px 0 112px;
+  gap: 40px;
 }
 
 .about__column {

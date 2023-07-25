@@ -1,5 +1,6 @@
 .promo {
-  /* padding: 75px 5% 75px; */
+  padding-top: 75px;
+  padding-bottom: 76px;
   background-color: #073042;
   margin: 0;
   display: grid;
@@ -32,12 +33,15 @@
 .promo__link {
   grid-area: link;
   justify-self: start;
-  margin: 146px 0 0;
+  margin: 147px 0 0;
   border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.6);
   text-decoration: none;
   color: #fff;
-  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  padding: 9px 19px;
   transition: opacity 0.3s linear;
 }
 

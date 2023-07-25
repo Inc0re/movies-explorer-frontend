@@ -1,5 +1,5 @@
 .about-me {
-  /* padding: 110px 5% 50px; */
+  padding-top: 112px;
   display: grid;
   grid-template-areas:
     'title title'
@@ -30,7 +30,7 @@
 
 .about-me__job {
   grid-area: job;
-  margin: 18px 0 0;
+  margin: 20px 0 0;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
@@ -47,7 +47,7 @@
 
 .about-me__link {
   grid-area: link;
-  margin: 0;
+  margin: 55px 0 0;
   align-self: end;
   text-decoration: none;
   color: #fff;
@@ -63,6 +63,6 @@
 .about-me__photo {
   grid-area: photo;
   justify-self: end;
-  margin: 66px 0 0;
   border-radius: 10px;
+  align-self: end;
 }

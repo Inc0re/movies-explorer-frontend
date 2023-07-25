@@ -1,5 +1,6 @@
 .portfolio {
-  /* padding: 50px 5% 125px; */
+  padding-top: 100px;
+  padding-bottom: 106px;
   display: grid;
   grid-template-rows: repeat(2, auto);
 }
@@ -15,17 +16,17 @@
 .portfolio__list {
   list-style: none;
   padding: 0;
-  margin: 50px 0 0;
+  margin: 46px 0 0;
   display: grid;
   grid-template-rows: repeat(3, auto);
-  gap: 20px;
+  gap: 19px;
 }
 
 .portfolio__list-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 19px;
+  padding-bottom: 11px;
   border-bottom: 1px solid #424242;
 }
 
