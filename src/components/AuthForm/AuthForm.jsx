@@ -49,7 +49,12 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
         </>
       ))}
       {error && <p className='auth-form__error'>{error}</p>}
-      <button className='auth-form__btn' type='submit'>
+      <button
+        className={
+          'auth-form__btn' + (type === 'login' ? ' auth-form__btn_margin_xl' : '')
+        }
+        type='submit'
+      >
         {btnText}
       </button>
       <div className='auth-form__redirect'>

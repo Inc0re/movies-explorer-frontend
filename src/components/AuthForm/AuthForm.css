@@ -9,14 +9,14 @@
 }
 
 .auth-form__title {
-  margin: 30px 0;
+  margin: 30px 0 20px;
   font-size: 24px;
   font-weight: 500;
 }
 
 .auth-form__redirect {
   display: block;
-  margin-top: 16px;
+  margin-top: 7px;
   text-align: center;
   color: #8b8b8b;
   text-align: center;
@@ -28,7 +28,6 @@
 }
 
 .auth-form__link {
-  margin: 6px 0 0;
   color: #4285f4;
   text-decoration: none;
   transition: opacity 0.3s linear;
@@ -39,6 +38,7 @@
 }
 
 .auth-form__label {
+  margin-top: 12px;
   color: #8b8b8b;
   font-size: 10px;
   font-weight: 400;
@@ -88,4 +88,8 @@
   color: #8b8b8b;
   background-color: #2f2f2f;
   cursor: not-allowed;
+}
+
+.auth-form__btn_margin_xl {
+  margin-top: 148px;
 }
