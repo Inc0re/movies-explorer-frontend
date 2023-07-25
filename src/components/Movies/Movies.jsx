@@ -4,13 +4,13 @@ import Pagination from '../Pagination/Pagination'
 import SearchForm from '../SearchForm/SearchForm'
 import './Movies.css'
 
-function Movies() {
+function Movies({ isSaved }) {
   return (
     <main className='movies'>
-      <SearchForm/>
-      <MoviesCardList/>
+      <SearchForm />
+      <MoviesCardList isSaved={isSaved} />
       {/* <Preloader/> */}
-      <Pagination/>
+      {!isSaved && <Pagination />}
     </main>
   )
 }

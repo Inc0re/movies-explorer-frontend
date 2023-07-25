@@ -5,7 +5,7 @@
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-rows: repeat(3, min-content);
+  grid-template-rows: min-content minmax(min-content, 200px) min-content;
   align-items: center;
   justify-items: center;
   border-radius: 6px;

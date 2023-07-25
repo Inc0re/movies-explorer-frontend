@@ -1,6 +1,6 @@
 import './MoviesCard.css'
 
-function MoviesCard({ card }) {
+function MoviesCard({ card, savedClass }) {
   const { title, isSaved, link, length } = card
   return (
     <li className='movie-card'>
@@ -15,7 +15,7 @@ function MoviesCard({ card }) {
       />
       <button
         className={`movie-card__button${
-          isSaved ? ' movie-card__button_saved' : ''
+          isSaved ? ` ${savedClass}`  : ''
         }`}
       >
         {!isSaved && 'Сохранить'}

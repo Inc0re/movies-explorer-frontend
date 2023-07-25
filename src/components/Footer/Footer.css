@@ -5,6 +5,8 @@
   grid-template-areas:
     'text text'
     'copyright links';
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .footer__text {

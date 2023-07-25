@@ -1,5 +1,6 @@
 .movies {
   position: relative;
-  max-width: 89%;
+  width: 89%;
+  max-width: 1140px;
   margin: 0 auto;
 }

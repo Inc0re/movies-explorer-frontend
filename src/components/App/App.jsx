@@ -35,6 +35,16 @@ function App() {
             </>
           }
         />
+        <Route
+          path='/saved-movies'
+          element={
+            <>
+              <Header loggedIn={true} />
+              <Movies isSaved={true} />
+              <Footer />
+            </>
+          }
+        />
         <Route path='/sign-up' element={<Register />} />
         <Route path='/sign-in' element={<Login />} />
         <Route
