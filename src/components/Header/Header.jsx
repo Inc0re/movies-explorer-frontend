@@ -7,7 +7,10 @@ function Header({ loggedIn }) {
   const [currentPage, setCurrentPage] = useState('')
 
   const setActiveClass = (linkPath) => {
-    return 'header__link' + (currentPage === linkPath ? ' header__link_active' : '')
+    return (
+      'header__link header__link_authorized' +
+      (currentPage === linkPath ? ' header__link_active' : '')
+    )
   }
 
   useEffect(() => {

@@ -41,6 +41,10 @@
   font-size: 12px;
   font-weight: 500;
 }
+.header__link_authorized {
+  font-size: 14px;
+  font-weight: 400;
+}
 
 .header__link_active {
   font-weight: 500;
