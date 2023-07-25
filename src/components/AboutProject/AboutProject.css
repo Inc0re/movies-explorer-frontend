@@ -74,3 +74,19 @@
   line-height: 1.21;
   color: #8b8b8b;
 }
+
+@media screen and (max-width: 850px) {
+  .about {
+    padding-top: 92px;
+    padding-bottom: 91px;
+  }
+
+  .about__info {
+    gap: 30px;
+    padding-bottom: 94px;
+  }
+
+  .about__column-text {
+    font-size: 12px;
+  }
+}

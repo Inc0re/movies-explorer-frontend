@@ -9,6 +9,7 @@
 
 .header_color_green {
   background-color: #073042;
+  max-width: 100%;
 }
 
 .header__logo {
@@ -88,4 +89,10 @@
   background-repeat: no-repeat;
   background-color: #313131;
   border-radius: 50px;
+}
+
+@media screen and (max-width: 850px) {
+  .header {
+    padding: 18px 4%;
+  }
 }

@@ -12,3 +12,10 @@
   border-bottom: 1px solid #fff;
   letter-spacing: -0.88px;
 }
+
+@media screen and (max-width: 850px) {
+  .section {
+    padding-right: 6.5%;
+    padding-left: 6.5%;
+  }
+}

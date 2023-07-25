@@ -7,6 +7,7 @@
     'job photo'
     'description photo'
     'link photo';
+  column-gap: 10px;
 }
 
 .about-me__title {
@@ -65,4 +66,34 @@
   justify-self: end;
   border-radius: 10px;
   align-self: end;
+}
+
+@media screen and (max-width: 850px) {
+  .about-me {
+    padding-top: 92px;
+    padding-bottom: 0;
+  }
+  .about-me__name {
+    margin: 65px 0 0;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -1.6px;
+  }
+  .about-me__job {
+    margin: 16px 0 0;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .about-me__description {
+    margin: 20px 0 0;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .about-me__photo {
+    max-width: 255px;
+  }
+  .about-me__link {
+    margin-top: 70px;
+  }
 }
