@@ -1,5 +1,5 @@
 .not-found {
-  margin-top: 95px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,9 +20,26 @@
 }
 
 .not-found__link {
+  position: fixed;
+  bottom: 22%;
   margin: 186px 0 0;
   text-decoration: none;
   color: #4285f4;
   font-size: 14px;
   font-weight: 400;
+}
+
+@media screen and (max-width: 425px) {
+  .not-found__code {
+    font-size: 80px;
+  }
+
+  .not-found__text {
+    font-size: 12px;
+  }
+
+  .not-found__link {
+    position: fixed;
+    bottom: 30px;
+  }
 }
