@@ -2,6 +2,8 @@
 
 Фронтенд часть проекта Moviex Explorer
 
+Ссылка на макет Figma: [https://disk.yandex.kz/d/Ir0gkv6OkSWd3g](https://disk.yandex.kz/d/Ir0gkv6OkSWd3g)
+
 Ссылка на репозиторий: [https://github.com/Inc0re/movies-explorer-frontend](https://github.com/Inc0re/movies-explorer-frontend)
 
 Ссылка на репозиторий бэкенда: [https://github.com/Inc0re/movies-explorer-api](https://github.com/Inc0re/movies-explorer-api)
