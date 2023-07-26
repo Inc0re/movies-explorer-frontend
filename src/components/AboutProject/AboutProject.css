@@ -45,7 +45,7 @@
 
 .about__progress {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: minmax(100px, 1fr) 4fr;
 }
 
 .about__progress-column {
@@ -88,5 +88,40 @@
 
   .about__column-text {
     font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about {
+    padding-top: 70px;
+  }
+
+  .about__info {
+    grid-template: auto auto / 1fr;
+    gap: 56px;
+    padding-bottom: 60px;
+  }
+
+  .about__column {
+    gap: 16px;
+  }
+
+  .about__column-title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .about__column-text {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about__progress-column-text {
+    font-size: 11px;
+  }
+
+  .about__progress-column-caption {
+    margin-top: 10px;
+    font-size: 11px;
   }
 }

@@ -2,6 +2,7 @@
   padding: 79px 5.5% 0;
   display: grid;
   justify-content: space-between;
+  align-items: center;
   grid-template-areas:
     'text text'
     'copyright links';
@@ -59,5 +60,36 @@
   .footer {
     padding-right: 4%;
     padding-left: 4%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .footer {
+    grid-template-areas:
+      'text'
+      'links'
+      'copyright';
+    justify-content: normal;
+  }
+
+  .footer__text {
+    font-size: 12px;
+  }
+
+  .footer__links {
+    grid-template: repeat(2, auto) / 1fr;
+    justify-items: center;
+    gap: 12px;
+  }
+
+  .footer__link {
+    font-size: 12px;
+  }
+
+  .footer__copyright {
+    padding-top: 10px;
+    text-align: center;
+    color: #8B8B8B;
+    font-size: 12px;
   }
 }

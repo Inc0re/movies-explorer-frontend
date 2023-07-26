@@ -85,3 +85,30 @@
     justify-self: center;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .promo {
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
+
+  .promo__logo {
+    width: 210px;
+    height: 206px;
+  }
+
+  .promo__title {
+    margin-top: 44px;
+    font-size: 30px;
+    line-height: 1.26;
+    letter-spacing: -1.2px;
+  }
+
+  .promo__subtitle {
+    margin-top: 24px;
+  }
+
+  .promo__link {
+    margin-top: 80px;
+  }
+}

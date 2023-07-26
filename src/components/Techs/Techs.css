@@ -77,10 +77,29 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  /* .techs__list {
-    grid-template-columns: repeat(auto-fill, 84px);
-    grid-template-rows: repeat(4, 84px);
-    grid-auto-flow: column;
-  } */
+@media screen and (max-width: 425px) {
+  .techs {
+    background-color: #202020;
+    padding-top: 49px;
+    padding-bottom: 48px;
+  }
+  .techs__title {
+    border-bottom: 1px solid #000;
+  }
+
+  .techs__highlight {
+    margin-top: 68px;
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__text {
+    margin-top: 24px;
+    font-size: 11px;
+    line-height: 1.45;
+    letter-spacing: -0.44px;
+  }
+  .techs__list {
+    margin-top: 50px;
+  }
 }

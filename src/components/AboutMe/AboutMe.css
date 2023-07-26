@@ -12,12 +12,6 @@
 
 .about-me__title {
   grid-area: title;
-  /* margin: 0;
-  font-size: 22px;
-  font-weight: 400;
-  color: #fff;
-  padding-bottom: 23px;
-  border-bottom: 1px solid #fff; */
 }
 
 .about-me__name {
@@ -95,5 +89,44 @@
   }
   .about-me__link {
     margin-top: 70px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-me {
+    grid-template-areas:
+      'title'
+      'photo'
+      'name'
+      'job'
+      'description'
+      'link';
+  }
+
+  .about-me__photo {
+    justify-self: center;
+    max-width: 100%;
+    margin-top: 60px;
+  }
+
+  .about-me__name {
+    margin-top: 40px;
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .about-me__job {
+    margin-top: 20px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-me__description {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-me__link {
+    margin-top: 40px;
   }
 }
