@@ -55,13 +55,6 @@ const cards = [
     isSaved: true,
     length: 210,
   },
-  {
-    _id: '1d11d12w32',
-    title: 'В погоне за Бенкси',
-    link: 'https://avatars.mds.yandex.net/get-vertis-journal/4466156/2021-04-08-4a131270afca45758904bfa8d3a94d1f.jpg_1622737331841/orig',
-    isSaved: false,
-    length: 27,
-  },
 ]
 
 export default cards
