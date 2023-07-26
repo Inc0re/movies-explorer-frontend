@@ -57,3 +57,14 @@
   cursor: pointer;
   transform: scale(1.1);
 }
+
+@media screen and (max-width: 425px) {
+  .search-form {
+    padding-top: 84px;
+    padding-bottom: 90px;
+  }
+
+  .search-form__input {
+    font-size: 18px;
+  }
+}

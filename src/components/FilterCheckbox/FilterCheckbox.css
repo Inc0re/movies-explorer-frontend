@@ -1,10 +1,16 @@
+.filter-checkbox {
+  display: grid;
+  grid-template-areas: 'button text';
+  gap: 13px;
+  align-items: center;
+}
+
 .filter-checkbox__input {
-  height: 0;
-  width: 0;
-  visibility: hidden;
+  display: none;
 }
 
 .filter-checkbox__label {
+  grid-area: button;
   cursor: pointer;
   text-indent: 50px;
   width: 36px;
@@ -13,9 +19,9 @@
   display: block;
   border-radius: 20px;
   position: relative;
-  font-size: 13px;
+  /* font-size: 13px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.5; */
 }
 
 .filter-checkbox__label:after {
@@ -41,4 +47,30 @@
 
 .filter-checkbox__label:active:after {
   width: 20px;
+}
+
+.filter-checkbox__text {
+  grid-area: text;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 425px) {
+  .filter-checkbox {
+    margin: 0 auto;
+  }
+
+  .filter-checkbox__text {
+    grid-area: button;
+  }
+
+  .filter-checkbox__label {
+    grid-area: text;
+  }
+
+  .filter-checkbox__text {
+    font-size: 11px;
+  }
 }

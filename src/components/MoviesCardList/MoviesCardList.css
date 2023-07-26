@@ -9,3 +9,9 @@
   column-gap: 28px;
   row-gap: 37px;
 }
+
+@media screen and (max-width: 425px) {
+  .cards {
+    row-gap: 16px;
+  }
+}
