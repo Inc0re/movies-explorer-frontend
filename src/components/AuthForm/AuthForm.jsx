@@ -23,7 +23,7 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
 
   return (
     <form className='auth-form' onSubmit={handleSubmit}>
-      <Link to='/' className='header__logo' />
+      <Link to='/' className='auth-form__logo' />
       <h2 className='auth-form__title'>{title}</h2>
       {fields.map(field => (
         <>
