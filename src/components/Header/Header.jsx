@@ -49,7 +49,7 @@ function Header({ loggedIn }) {
               (isBurgerMenuOpen ? ' header__container_active' : '')
             }
           >
-            <nav className='header__links header__links_burger header__links_authorized'>
+            <nav className='header__links header__links_authorized'>
               <Link
                 to='/'
                 className={setActiveClass('/') + ' header__link_type_home'}
@@ -65,12 +65,7 @@ function Header({ loggedIn }) {
               >
                 Сохранённые фильмы
               </Link>
-              <Link
-                to='/profile'
-                className={
-                  setActiveClass('/profile') + ' header__link_type_account'
-                }
-              >
+              <Link to='/profile' className='header__link header__link_type_account'>
                 Аккаунт
                 <div className='header__profile-icon' />
               </Link>

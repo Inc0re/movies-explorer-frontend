@@ -127,20 +127,44 @@
     transition: opacity 0.3s linear;
   }
 
-  .header__links_burger {
+  .header__links_authorized {
     grid-area: burger;
     max-width: 550px;
     padding-top: 144px;
     display: flex;
-    background-color: #202020;
     flex-direction: column;
+    background-color: #202020;
+    gap: 22px;
   }
+
+  /* .header__links_burger {
+    grid-area: burger;
+    max-width: 550px;
+    padding-top: 144px;
+    display: flex;
+    flex-direction: column;
+    background-color: #202020;
+  } */
 
   .header__link_type_home {
     display: block;
   }
 
+  .header__link_authorized {
+    gap: 0;
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 4px;
+    /* margin-bottom: 22px; */
+  }
+
+  .header__link_active {
+    font-weight: 500;
+    border-bottom: 2px solid #fff;
+  }
+
   .header__link_type_account {
     margin: auto 0 46px;
+    font-size: 13px;
   }
 }
