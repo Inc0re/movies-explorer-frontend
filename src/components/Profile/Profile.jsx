@@ -32,9 +32,11 @@ function Profile() {
           placeholder={user.email}
           required
         />
+      <div className='profile__buttons'>
+        <button className='profile__button'>Редактировать</button>
+        <button className='profile__button profile__button_red'>Выйти из аккаунта</button>
+      </div>
       </form>
-      <button className='profile__button'>Редактировать</button>
-      <button className='profile__button profile__button_red'>Выйти из аккаунта</button>
     </div>
   )
 }
