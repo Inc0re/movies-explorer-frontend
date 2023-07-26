@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Header.css'
+import '../BurgerMenu/BurgerMenu.css'
 
 function Header({ loggedIn }) {
   const location = useLocation()
   const [currentPage, setCurrentPage] = useState('')
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
 
-  const setActiveClass = (linkPath) => {
+  const handleBurgerMenuClick = () => {
+    setIsBurgerMenuOpen(!isBurgerMenuOpen)
+  }
+
+  const setActiveClass = linkPath => {
     return (
       'header__link header__link_authorized' +
       (currentPage === linkPath ? ' header__link_active' : '')
@@ -25,23 +31,52 @@ function Header({ loggedIn }) {
         Главная
       </Link>
       {loggedIn ? (
-        <nav className='header__links header__links_authorized'>
-          <Link to='/movies' className={setActiveClass('/movies')}>
-            Фильмы
-          </Link>
-          <Link to='/saved-movies' className={setActiveClass('/saved-movies')}>
-            Сохранённые фильмы
-          </Link>
-          <Link
-            to='/profile'
+        <>
+          <input
+            className='burger__checkbox'
+            type='checkbox'
+            id='burger__checkbox'
+            name='burger__checkbox'
+            checked={isBurgerMenuOpen}
+            onChange={handleBurgerMenuClick}
+          />
+          <label className='burger' for='burger__checkbox'>
+            <span className='burger__line' />
+          </label>
+          <div
             className={
-              setActiveClass('/profile') + ' header__link_type_account'
+              'header__container' +
+              (isBurgerMenuOpen ? ' header__container_active' : '')
             }
           >
-            Аккаунт
-            <div className='header__profile-icon' />
-          </Link>
-        </nav>
+            <nav className='header__links header__links_burger header__links_authorized'>
+              <Link
+                to='/'
+                className={setActiveClass('/') + ' header__link_type_home'}
+              >
+                Главная
+              </Link>
+              <Link to='/movies' className={setActiveClass('/movies')}>
+                Фильмы
+              </Link>
+              <Link
+                to='/saved-movies'
+                className={setActiveClass('/saved-movies')}
+              >
+                Сохранённые фильмы
+              </Link>
+              <Link
+                to='/profile'
+                className={
+                  setActiveClass('/profile') + ' header__link_type_account'
+                }
+              >
+                Аккаунт
+                <div className='header__profile-icon' />
+              </Link>
+            </nav>
+          </div>
+        </>
       ) : (
         <nav className='header__links'>
           <Link to='/sign-up' className='header__link'>

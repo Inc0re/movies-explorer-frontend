@@ -1,0 +1,68 @@
+/* лейбл замаскированный в кнопку */
+.burger {
+  display: none;
+}
+/* чекбокс которого нет */
+.burger__checkbox {
+  display: none;
+}
+
+/* средняя линия кнопки бургера */
+.burger__line {
+}
+
+@media screen and (max-width: 768px) {
+  .burger {
+    cursor: pointer;
+    display: flex;
+    z-index: 2;
+    padding: 20.5px 8px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .burger__line {
+    background: #fff;
+    display: block;
+    height: 3px;
+    width: 28px;
+    position: relative;
+  }
+
+  /* расстрояние от центральной линии до верхней */
+  .burger__line::before {
+    top: 10px;
+  }
+  /* расстрояние от центральной линии до нижней */
+  .burger__line::after {
+    top: -10px;
+  }
+
+  .burger__line::before,
+  .burger__line::after {
+    background: #fff;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    transition: all 0.2s ease-out;
+  }
+
+  .burger__checkbox:checked ~ .burger .burger__line {
+    background: transparent;
+  }
+
+  .burger__checkbox:checked ~ .burger .burger__line:before {
+    transform: rotate(-45deg);
+  }
+
+  .burger__checkbox:checked ~ .burger .burger__line:after {
+    transform: rotate(45deg);
+  }
+
+  .burger__checkbox:checked ~ .burger .burger__line:before,
+  .burger__checkbox:checked ~ .burger .burger__line:after {
+    top: 0;
+  }
+}
