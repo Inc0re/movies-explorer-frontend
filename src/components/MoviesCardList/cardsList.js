@@ -52,7 +52,7 @@ const cards = [
     _id: '1d11d12w1s221',
     title: 'Очень очень очень очень длинное название фильма',
     link: 'https://shounen.ru/uploads/posts/2020-12/1607572696_888-3.jpg',
-    isSaved: true,
+    isSaved: false,
     length: 210,
   },
 ]

@@ -10,6 +10,16 @@
   row-gap: 37px;
 }
 
+.cards_padding_bottom {
+  padding-bottom: 231px;
+}
+
+@media screen and (max-width: 850px) {
+  .cards_padding_bottom {
+    padding-bottom: 172px;
+  }
+}
+
 @media screen and (max-width: 425px) {
   .cards {
     row-gap: 16px;

@@ -57,17 +57,19 @@
   line-height: 1.5;
 }
 
-@media screen and (max-width: 425px) {
-  .filter-checkbox {
-    margin: 0 auto;
-  }
-
+@media screen and (max-width: 850px) {
   .filter-checkbox__text {
     grid-area: button;
   }
 
   .filter-checkbox__label {
     grid-area: text;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .filter-checkbox {
+    margin: 0 auto;
   }
 
   .filter-checkbox__text {

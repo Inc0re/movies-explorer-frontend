@@ -42,7 +42,7 @@
 
 .about-me__link {
   grid-area: link;
-  margin: 55px 0 0;
+  margin: 100px 0 0;
   align-self: end;
   text-decoration: none;
   color: #fff;
@@ -88,7 +88,7 @@
     max-width: 255px;
   }
   .about-me__link {
-    margin-top: 70px;
+    margin-top: 87px;
   }
 }
 

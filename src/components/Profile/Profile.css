@@ -83,6 +83,21 @@
   color: #ee3465;
 }
 
+@media screen and (max-width: 850px) {
+  .profile__title {
+    margin-top: 234px;
+  }
+
+  .profile__form {
+    margin-top: 96px;
+    row-gap: 15px;
+  }
+
+  .profile__buttons {
+    margin-top: 194px;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .profile__title {
     margin-top: 70px;

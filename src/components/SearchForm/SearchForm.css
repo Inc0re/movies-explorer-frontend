@@ -58,6 +58,16 @@
   transform: scale(1.1);
 }
 
+@media screen and (max-width: 850px) {
+
+  .search-form {
+    padding-bottom: 133px;
+  }
+  .search-form__fieldset:last-child {
+    justify-content: flex-end;
+  }
+}
+
 @media screen and (max-width: 425px) {
   .search-form {
     padding-top: 84px;
