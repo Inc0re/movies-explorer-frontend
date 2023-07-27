@@ -33,7 +33,6 @@
   text-align: center;
   color: #8b8b8b;
   text-align: center;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -68,6 +67,10 @@
   font-weight: 400;
 }
 
+.auth-form__field:focus {
+  outline: 1px solid #424242;
+}
+
 .auth-form__field:invalid {
   color: #ee3465;
 }
@@ -91,6 +94,10 @@
   transition: background-color 0.3s linear;
   cursor: pointer;
   margin-top: 59px;
+}
+
+.auth-form__btn:focus {
+  outline: 1px solid #424242;
 }
 
 .auth-form__btn:hover {

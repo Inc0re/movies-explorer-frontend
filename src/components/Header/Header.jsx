@@ -33,17 +33,19 @@ function Header({ loggedIn, onBurgerClick }) {
       </Link>
       {loggedIn ? (
         <>
-          <input
-            className='burger__checkbox'
-            type='checkbox'
-            id='burger__checkbox'
-            name='burger__checkbox'
-            checked={isBurgerMenuOpen}
-            onChange={handleBurgerMenuClick}
-          />
-          <label className='burger' for='burger__checkbox'>
-            <span className='burger__line' />
-          </label>
+          <div className='burger'>
+            <input
+              className='burger__checkbox'
+              type='checkbox'
+              id='burger__checkbox'
+              name='burger__checkbox'
+              checked={isBurgerMenuOpen}
+              onChange={handleBurgerMenuClick}
+            />
+            <label className='burger__btn' for='burger__checkbox'>
+              <span className='burger__line' />
+            </label>
+          </div>
           <div
             className={
               'header__container' +

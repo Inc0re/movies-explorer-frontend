@@ -39,6 +39,7 @@
   border-color: #424242;
   width: 100%;
   padding-bottom: 15px;
+  align-items: center;
 }
 
 .profile__row:nth-last-of-type(2) {
@@ -54,8 +55,13 @@
   font-size: 11px;
   font-weight: 400;
   border: 0 none;
+  border-radius: 2px;
   outline: 0 none;
   background-color: transparent;
+}
+
+.profile__field:focus {
+  outline: 1px solid #424242;
 }
 
 .profile__field::placeholder {

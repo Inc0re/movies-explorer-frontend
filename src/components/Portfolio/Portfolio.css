@@ -79,6 +79,10 @@
     line-height: 1.42;
   }
 
+  .portfolio__list{
+    margin-top: 42px;
+  }
+
   .portfolio__list-item {
     padding-bottom: 19px;
     border-bottom: 1px solid #fff;

@@ -125,3 +125,9 @@
     font-size: 11px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .about__progress-column-text {
+    padding: 12px 10px;
+  }
+}

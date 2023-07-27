@@ -88,7 +88,7 @@
   }
 
   .techs__highlight {
-    margin-top: 68px;
+    margin-top: 62px;
     font-size: 30px;
     letter-spacing: -1.2px;
   }
@@ -101,5 +101,6 @@
   }
   .techs__list {
     margin-top: 50px;
+    width: 90%;
   }
 }

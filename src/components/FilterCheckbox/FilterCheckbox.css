@@ -19,9 +19,11 @@
   display: block;
   border-radius: 20px;
   position: relative;
-  /* font-size: 13px;
-  font-weight: 400;
-  line-height: 1.5; */
+  transition: background-color 0.2s linear;
+}
+
+.filter-checkbox__label:hover {
+  background-color: #ee3465;
 }
 
 .filter-checkbox__label:after {
@@ -55,6 +57,11 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 1.5;
+  transition: color 0.2s linear;
+}
+
+.filter-checkbox__text:hover {
+  color: #ee3465;
 }
 
 @media screen and (max-width: 850px) {

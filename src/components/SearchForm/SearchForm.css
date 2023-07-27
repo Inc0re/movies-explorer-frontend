@@ -36,8 +36,13 @@
   font-size: 28px;
   font-weight: 500;
   border: 0 none;
+  border-radius: 2px;
   outline: 0 none;
   background: none;
+}
+
+.search-form__input:focus {
+  outline: 1px solid #424242;
 }
 
 .search-form__input::placeholder {
@@ -59,7 +64,6 @@
 }
 
 @media screen and (max-width: 850px) {
-
   .search-form {
     padding-bottom: 133px;
   }

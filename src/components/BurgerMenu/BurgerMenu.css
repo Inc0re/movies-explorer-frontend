@@ -1,5 +1,9 @@
-/* лейбл замаскированный в кнопку */
 .burger {
+  z-index: 2;
+}
+
+/* лейбл замаскированный в кнопку */
+.burger__btn {
   display: none;
 }
 /* чекбокс которого нет */
@@ -7,18 +11,18 @@
   display: none;
 }
 
-/* средняя линия кнопки бургера */
-.burger__line {
-}
-
 @media screen and (max-width: 768px) {
-  .burger {
+  .burger__btn {
     cursor: pointer;
     display: flex;
-    z-index: 2;
     padding: 20.5px 8px;
     top: 15px;
     right: 15px;
+    transition: opacity 0.2s linear;
+  }
+
+  .burger__btn:hover {
+    opacity: 0.8;
   }
 
   .burger__line {
@@ -49,20 +53,20 @@
     transition: all 0.2s ease-out;
   }
 
-  .burger__checkbox:checked ~ .burger .burger__line {
+  .burger__checkbox:checked ~ .burger__btn .burger__line {
     background: transparent;
   }
 
-  .burger__checkbox:checked ~ .burger .burger__line:before {
+  .burger__checkbox:checked ~ .burger__btn .burger__line:before {
     transform: rotate(-45deg);
   }
 
-  .burger__checkbox:checked ~ .burger .burger__line:after {
+  .burger__checkbox:checked ~ .burger__btn .burger__line:after {
     transform: rotate(45deg);
   }
 
-  .burger__checkbox:checked ~ .burger .burger__line:before,
-  .burger__checkbox:checked ~ .burger .burger__line:after {
+  .burger__checkbox:checked ~ .burger__btn .burger__line:before,
+  .burger__checkbox:checked ~ .burger__btn .burger__line:after {
     top: 0;
   }
 }

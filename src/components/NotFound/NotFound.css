@@ -25,6 +25,11 @@
   color: #4285f4;
   font-size: 14px;
   font-weight: 400;
+  transition: color 0.2s linear;
+}
+
+.not-found__link:hover {
+color: #ee3465;
 }
 
 @media screen and (max-width: 425px) {
@@ -36,7 +41,7 @@
   .not-found__text {
     font-size: 12px;
   }
-  
+
   .not-found__link {
     margin: auto 0 30px;
   }
