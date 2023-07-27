@@ -9,12 +9,24 @@ function Footer() {
       <div className='footer__copyright'>© 2020</div>
       <ul className='footer__links'>
         <li className='footer__list-item'>
-          <a href='https://practicum.yandex.ru' className='footer__link'>
+          <a
+            href='https://practicum.yandex.ru'
+            className='footer__link'
+            target='_blank'
+            rel='noreferrer'
+          >
             Яндекс.Практикум
           </a>
         </li>
         <li className='footer__list-item'>
-          <a href='https://github.com/Inc0re' className='footer__link'>Github</a>
+          <a
+            href='https://github.com/Inc0re'
+            className='footer__link'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Github
+          </a>
         </li>
       </ul>
     </footer>

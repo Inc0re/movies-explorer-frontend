@@ -4,25 +4,23 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  justify-content: center;
 }
 
 .not-found__code {
-  margin: 0;
+  padding-top: 180px;
+  margin: auto 0 5px;
   font-size: 140px;
   font-weight: 400;
 }
 
 .not-found__text {
-  margin: 8px 0 0;
+  margin: 5px 0 0;
   font-size: 16px;
   font-weight: 400;
 }
 
 .not-found__link {
-  position: fixed;
-  bottom: 22%;
-  margin: 186px 0 0;
+  margin: 184px 0 auto;
   text-decoration: none;
   color: #4285f4;
   font-size: 14px;
@@ -32,14 +30,14 @@
 @media screen and (max-width: 425px) {
   .not-found__code {
     font-size: 80px;
+    padding-top: 50px;
   }
 
   .not-found__text {
     font-size: 12px;
   }
-
+  
   .not-found__link {
-    position: fixed;
-    bottom: 30px;
+    margin: auto 0 30px;
   }
 }

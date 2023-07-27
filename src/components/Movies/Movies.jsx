@@ -8,7 +8,9 @@ function Movies({ isSaved }) {
   return (
     <main className='movies'>
       <SearchForm />
-      <MoviesCardList isSaved={isSaved} />
+      <section>
+        <MoviesCardList isSaved={isSaved} />
+      </section>
       {/* <Preloader/> */}
       {!isSaved && <Pagination />}
     </main>

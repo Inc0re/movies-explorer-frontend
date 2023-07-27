@@ -3,13 +3,14 @@ import { Link, useLocation } from 'react-router-dom'
 import './Header.css'
 import '../BurgerMenu/BurgerMenu.css'
 
-function Header({ loggedIn }) {
+function Header({ loggedIn, onBurgerClick }) {
   const location = useLocation()
   const [currentPage, setCurrentPage] = useState('')
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
 
   const handleBurgerMenuClick = () => {
     setIsBurgerMenuOpen(!isBurgerMenuOpen)
+    document.querySelector('.app').classList.toggle('app_fixed')
   }
 
   const setActiveClass = linkPath => {
@@ -74,11 +75,11 @@ function Header({ loggedIn }) {
         </>
       ) : (
         <nav className='header__links'>
-          <Link to='/sign-up' className='header__link'>
+          <Link to='/signup' className='header__link'>
             Регистрация
           </Link>
           <Link
-            to='/sign-in'
+            to='/signin'
             className='header__link header__link_type_green-button'
           >
             Войти

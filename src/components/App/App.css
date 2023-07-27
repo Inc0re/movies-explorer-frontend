@@ -1,3 +1,9 @@
 .app {
   font-family: 'Inter', Arial, sans-serif;
+  display: grid;
+  position: relative;
+}
+
+.app_fixed {
+  position: fixed;
 }

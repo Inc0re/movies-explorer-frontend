@@ -14,9 +14,8 @@ function MoviesCard({ card, savedClass }) {
         className='movie-card__poster'
       />
       <button
-        className={`movie-card__button${
-          isSaved ? ` ${savedClass}`  : ''
-        }`}
+        className={`movie-card__button${isSaved ? ` ${savedClass}` : ''}`}
+        type='button'
       >
         {!isSaved && 'Сохранить'}
       </button>
