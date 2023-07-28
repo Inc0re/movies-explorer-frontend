@@ -10,7 +10,6 @@ function Header({ loggedIn, onBurgerClick }) {
 
   const handleBurgerMenuClick = () => {
     setIsBurgerMenuOpen(!isBurgerMenuOpen)
-    document.querySelector('.app').classList.toggle('app_fixed')
   }
 
   const setActiveClass = linkPath => {
@@ -68,7 +67,10 @@ function Header({ loggedIn, onBurgerClick }) {
               >
                 Сохранённые фильмы
               </Link>
-              <Link to='/profile' className='header__link header__link_type_account'>
+              <Link
+                to='/profile'
+                className='header__link header__link_type_account'
+              >
                 Аккаунт
                 <div className='header__profile-icon' />
               </Link>
