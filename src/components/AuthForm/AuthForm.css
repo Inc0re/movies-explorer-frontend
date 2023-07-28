@@ -116,6 +116,7 @@
 
 @media screen and (max-width: 425px) {
   .auth-form {
+    margin-top: 56px;
     max-width: 81%;
     min-height: 100vh;
   }
@@ -124,15 +125,15 @@
   }
 
   .auth-form__title {
-    margin: 50px auto 68px;
+    margin: 42px auto 57px;
   }
   .auth-form__btn {
-    margin-top: 147px;
+    margin-top: 145px;
   }
   .auth-form__redirect {
     font-size: 12px;
   }
   .auth-form__btn_margin_xl {
-    margin-top: 257px;
+    margin-top: 235px;
   }
 }
