@@ -23,7 +23,7 @@ function Profile() {
     <main>
       <section className='profile'>
         <h1 className='profile__title'>Привет, {user.name}!</h1>
-        <form onSubmit={console.log('submit')} className='profile__form'>
+        <form className='profile__form'>
           <div className='profile__row'>
             <label className='profile__label' htmlFor='name'>
               Имя
