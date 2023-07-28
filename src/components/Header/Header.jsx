@@ -41,7 +41,7 @@ function Header({ loggedIn, onBurgerClick }) {
               checked={isBurgerMenuOpen}
               onChange={handleBurgerMenuClick}
             />
-            <label className='burger__btn' for='burger__checkbox'>
+            <label className='burger__btn' htmlFor='burger__checkbox'>
               <span className='burger__line' />
             </label>
           </div>

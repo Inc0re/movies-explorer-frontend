@@ -68,7 +68,7 @@
 
 .header__link_type_account {
   margin-left: 30px;
-  padding: 9.5px 3px 9.5px 11px;
+  padding: 3px 3px 3px 11px;
   display: flex;
   align-items: center;
   border-radius: 40px;
@@ -167,7 +167,7 @@
   }
 
   .header__link_type_account {
-    margin: auto 0 81px;
+    margin: auto 0 90px;
     font-size: 13px;
   }
 }
@@ -177,11 +177,26 @@
     font-size: 10px;
   }
 
+  .header__link_authorized {
+    font-size: 18px;
+    padding-bottom: 6px;
+  }
+
   .header__link_type_green-button {
     padding: 7px 12px;
   }
 
+  .header__link_type_account {
+    font-size: 12px;
+    margin-bottom: 46px;
+  }
+
   .header__links {
     gap: 14px;
+  }
+
+  .header__links_authorized {
+    padding-top: 145px;
+    gap: 20px;
   }
 }
