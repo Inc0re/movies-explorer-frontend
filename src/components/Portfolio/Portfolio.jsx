@@ -14,8 +14,8 @@ function Portfolio() {
             rel='noreferrer'
           >
             Статичный сайт
-          </a>
           <div className='portfolio__list-arrow'>↗</div>
+          </a>
         </li>
         <li className='portfolio__list-item'>
           <a
@@ -25,8 +25,8 @@ function Portfolio() {
             rel='noreferrer'
           >
             Адаптивный сайт
-          </a>
           <div className='portfolio__list-arrow'>↗</div>
+          </a>
         </li>
         <li className='portfolio__list-item'>
           <a
@@ -36,8 +36,8 @@ function Portfolio() {
             rel='noreferrer'
           >
             Одностраничное приложение
-          </a>
           <div className='portfolio__list-arrow'>↗</div>
+          </a>
         </li>
       </ul>
     </section>
