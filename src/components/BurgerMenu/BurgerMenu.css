@@ -18,7 +18,7 @@
     padding: 20.5px 8px;
     top: 15px;
     right: 15px;
-    transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear, transform 0.1s linear;
   }
 
   .burger__btn:hover {
@@ -68,5 +68,16 @@
   .burger__checkbox:checked ~ .burger__btn .burger__line:before,
   .burger__checkbox:checked ~ .burger__btn .burger__line:after {
     top: 0;
+  }
+
+  .burger__checkbox:checked ~ .burger__btn {
+    transform: translateX(6px) translateY(-10px) scale(0.8);
+    position: fixed;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .burger__btn {
+    transform: scale(0.8);
   }
 }
