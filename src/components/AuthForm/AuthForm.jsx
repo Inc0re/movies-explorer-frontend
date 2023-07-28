@@ -1,3 +1,4 @@
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import useForm from '../../hooks/useForm'
 import './AuthForm.css'
@@ -29,17 +30,12 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
           <Link to='/' className='auth-form__logo' />
           <h1 className='auth-form__title'>{title}</h1>
           {fields.map(field => (
-            <>
-              <label
-                className='auth-form__label'
-                key={field.name}
-                htmlFor={field.name}
-              >
+            <Fragment key={field.name}>
+              <label className='auth-form__label' htmlFor={field.name}>
                 {field.placeholder}
               </label>
               <input
                 className='auth-form__field'
-                key={field.name}
                 type={field.type}
                 name={field.name}
                 id={field.name}
@@ -49,7 +45,7 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
                 minLength={field.minLength}
                 maxLength={field.maxLength}
               />
-            </>
+            </Fragment>
           ))}
           {error && <p className='auth-form__error'>{error}</p>}
           <button
