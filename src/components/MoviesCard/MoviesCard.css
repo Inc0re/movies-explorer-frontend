@@ -100,4 +100,7 @@
   .movie-card__length {
     font-size: 10px;
   }
+  .movie-card__button {
+    margin: 13px 0;
+  }
 }

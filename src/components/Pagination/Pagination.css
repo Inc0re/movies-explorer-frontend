@@ -23,11 +23,17 @@
 }
 
 .pagination__button:active {
-  background-color: #3DDC84;
+  background-color: #3ddc84;
 }
 
 @media screen and (max-width: 850px) {
-.pagination {
-  padding-top: 78px;
+  .pagination {
+    padding-top: 78px;
+  }
 }
+
+@media screen and (max-width: 425px) {
+  .pagination {
+    padding-bottom: 100px;
+  }
 }
