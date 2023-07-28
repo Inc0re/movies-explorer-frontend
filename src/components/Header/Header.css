@@ -116,7 +116,7 @@
     width: 100vw;
     height: 100vh;
     grid-template-areas: 'bg burger';
-    grid-template-columns: auto minmax(320px, 550px);
+    grid-template-columns: auto minmax(320px, 520px);
     background-color: rgba(0, 0, 0, 0.3);
     transition: opacity 0.3s linear, visibility 0s 0.3s;
   }
@@ -133,12 +133,12 @@
 
   .header__links_authorized {
     grid-area: burger;
-    max-width: 550px;
-    padding-top: 144px;
+    max-width: 520px;
+    padding-top: 160px;
     display: flex;
     flex-direction: column;
     background-color: #202020;
-    gap: 22px;
+    gap: 24px;
   }
 
   .header__link_type_home {
@@ -167,7 +167,7 @@
   }
 
   .header__link_type_account {
-    margin: auto 0 46px;
+    margin: auto 0 81px;
     font-size: 13px;
   }
 }
