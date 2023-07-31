@@ -1,0 +1,106 @@
+.movie-card {
+  position: relative;
+  /* max-width: 360px; */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
+  align-items: center;
+  justify-items: center;
+  border-radius: 6px;
+  background-color: #222;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+}
+
+.movie-card__header {
+  min-height: 48px;
+  box-sizing: border-box;
+  align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.movie-card__title {
+  margin: 0;
+  padding-left: 17px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.movie-card__length {
+  margin: 0;
+  padding-right: 18px;
+  color: #8b8b8b;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.38;
+}
+
+.movie-card__poster {
+  display: block;
+  /* max-height: 200px; */
+  aspect-ratio: 16/9;
+  width: 100%;
+  object-fit: cover;
+}
+
+.movie-card__button {
+  margin: 18px 0;
+  color: #fff;
+  border: 0 none;
+  width: 100px;
+  height: 29px;
+  padding: 0;
+  background-color: #313131;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 0.92;
+  transition: background-color 0.1s linear;
+  cursor: pointer;
+}
+
+.movie-card__button:hover {
+  background-color: #ee3465;
+}
+
+.movie-card__button_saved {
+  background-color: #ee3465;
+  background-image: url(../../images/check-mark.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.movie-card__button_saved:hover {
+  background-color: #313131;
+}
+
+.movie-card__button_remove {
+  background-image: url(../../images/cross-mark.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (max-width: 425px) {
+  .movie-card__title {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .movie-card__length {
+    font-size: 10px;
+  }
+  .movie-card__button {
+    margin: 13px 0;
+  }
+}

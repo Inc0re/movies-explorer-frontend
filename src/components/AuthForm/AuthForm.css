@@ -1,0 +1,139 @@
+.auth-form {
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 10px;
+  margin: 70px auto 0;
+  max-width: 396px;
+  align-items: center;
+  padding: 0;
+  border: 0 none;
+}
+
+.auth-form__logo {
+  color: transparent;
+  width: 38px;
+  height: 38px;
+  background-image: url(../../images/header-logo.svg);
+  transition: opacity 0.3s linear;
+}
+
+.auth-form__logo:hover {
+  opacity: 0.8;
+}
+
+.auth-form__title {
+  margin: 30px 0 20px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.auth-form__redirect {
+  display: block;
+  margin-top: 7px;
+  text-align: center;
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.auth-form__link {
+  color: #4285f4;
+  text-decoration: none;
+  transition: opacity 0.3s linear;
+}
+
+.auth-form__link:hover {
+  opacity: 0.8;
+}
+
+.auth-form__label {
+  margin-top: 12px;
+  color: #8b8b8b;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.auth-form__field {
+  padding: 15px;
+  border: 0 none;
+  outline: 0 none;
+  color: #fff;
+  background-color: #2f2f2f;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.auth-form__field:focus {
+  outline: 1px solid #424242;
+}
+
+.auth-form__field:invalid {
+  color: #ee3465;
+}
+
+.auth-form__error {
+  margin: 0;
+  color: #ee3465;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.auth-form__btn {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 3px;
+  background: #4285f4;
+  border: 0 none;
+  outline: 0 none;
+  padding: 13px 0 15px;
+  transition: background-color 0.3s linear;
+  cursor: pointer;
+  margin-top: 59px;
+}
+
+.auth-form__btn:focus {
+  outline: 1px solid #424242;
+}
+
+.auth-form__btn:hover {
+  background-color: #ee3465;
+}
+
+.auth-form__btn:disabled {
+  color: #8b8b8b;
+  background-color: #2f2f2f;
+  cursor: not-allowed;
+}
+
+.auth-form__btn_margin_xl {
+  margin-top: 148px;
+}
+
+@media screen and (max-width: 425px) {
+  .auth-form {
+    margin-top: 56px;
+    max-width: 81%;
+    min-height: 100vh;
+  }
+  .auth-form__logo {
+    margin: 0 auto;
+  }
+
+  .auth-form__title {
+    margin: 42px auto 57px;
+  }
+  .auth-form__btn {
+    margin-top: 145px;
+  }
+  .auth-form__redirect {
+    font-size: 12px;
+  }
+  .auth-form__btn_margin_xl {
+    margin-top: 235px;
+  }
+}

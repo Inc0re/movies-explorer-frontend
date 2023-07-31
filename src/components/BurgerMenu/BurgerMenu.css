@@ -1,0 +1,83 @@
+.burger {
+  z-index: 2;
+}
+
+/* лейбл замаскированный в кнопку */
+.burger__btn {
+  display: none;
+}
+/* чекбокс которого нет */
+.burger__checkbox {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .burger__btn {
+    cursor: pointer;
+    display: flex;
+    padding: 20.5px 8px;
+    top: 15px;
+    right: 15px;
+    transition: opacity 0.2s linear, transform 0.1s linear;
+  }
+
+  .burger__btn:hover {
+    opacity: 0.8;
+  }
+
+  .burger__line {
+    background: #fff;
+    display: block;
+    height: 3px;
+    width: 28px;
+    position: relative;
+  }
+
+  /* расстрояние от центральной линии до верхней */
+  .burger__line::before {
+    top: 10px;
+  }
+  /* расстрояние от центральной линии до нижней */
+  .burger__line::after {
+    top: -10px;
+  }
+
+  .burger__line::before,
+  .burger__line::after {
+    background: #fff;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    transition: all 0.2s ease-out;
+  }
+
+  .burger__checkbox:checked ~ .burger__btn .burger__line {
+    background: transparent;
+  }
+
+  .burger__checkbox:checked ~ .burger__btn .burger__line:before {
+    transform: rotate(-45deg);
+  }
+
+  .burger__checkbox:checked ~ .burger__btn .burger__line:after {
+    transform: rotate(45deg);
+  }
+
+  .burger__checkbox:checked ~ .burger__btn .burger__line:before,
+  .burger__checkbox:checked ~ .burger__btn .burger__line:after {
+    top: 0;
+  }
+
+  .burger__checkbox:checked ~ .burger__btn {
+    transform: translateX(6px) translateY(-10px) scale(0.8);
+    position: fixed;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .burger__btn {
+    transform: scale(0.8);
+  }
+}

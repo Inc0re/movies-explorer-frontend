@@ -1,0 +1,6 @@
+.app {
+  font-family: 'Inter', Arial, sans-serif;
+  display: grid;
+  position: relative;
+  width: 100%;
+}

@@ -1,0 +1,133 @@
+.about-me {
+  padding-top: 112px;
+  display: grid;
+  grid-template-areas:
+    'title title'
+    'name photo'
+    'job photo'
+    'description photo'
+    'link photo';
+  column-gap: 10px;
+}
+
+.about-me__title {
+  grid-area: title;
+}
+
+.about-me__name {
+  grid-area: name;
+  margin: 66px 0 0;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -2px;
+}
+
+.about-me__job {
+  grid-area: job;
+  margin: 20px 0 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+}
+
+.about-me__description {
+  grid-area: description;
+  margin: 26px 0 0;
+  max-width: 600px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.57;
+}
+
+.about-me__link {
+  grid-area: link;
+  margin: 100px 0 0;
+  align-self: end;
+  text-decoration: none;
+  color: #fff;
+  transition: opacity 0.3s linear;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.about-me__link:hover {
+  opacity: 0.8;
+}
+
+.about-me__photo {
+  grid-area: photo;
+  justify-self: end;
+  border-radius: 10px;
+  align-self: end;
+}
+
+@media screen and (max-width: 850px) {
+  .about-me {
+    padding-top: 92px;
+    padding-bottom: 0;
+  }
+  .about-me__name {
+    margin: 65px 0 0;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -1.6px;
+  }
+  .about-me__job {
+    margin: 16px 0 0;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .about-me__description {
+    margin: 20px 0 0;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .about-me__photo {
+    max-width: 255px;
+  }
+  .about-me__link {
+    margin-top: 87px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-me {
+    grid-template-areas:
+      'title'
+      'photo'
+      'name'
+      'job'
+      'description'
+      'link';
+  }
+
+  .about-me__photo {
+    justify-self: center;
+    max-width: 320px;
+    width: 100%;
+    margin-top: 60px;
+  }
+
+  .about-me__name {
+    margin-top: 40px;
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .about-me__job {
+    margin-top: 20px;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-me__description {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .about-me__link {
+    margin-top: 40px;
+  }
+}
