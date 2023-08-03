@@ -37,7 +37,13 @@ class Api {
 
   logout() {
     return this._request(`${this._baseUrl}/logout`, {
-      method: 'POST',
+      headers: this._headers,
+    });
+  }
+
+  getUserInfo() {
+    return this._request(`${this._baseUrl}/users/me`, {
+      method: 'GET',
       headers: this._headers,
     });
   }
