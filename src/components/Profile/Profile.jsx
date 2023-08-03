@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from 'react'
+// TODO: fix form reset after submit
+import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import useFormAndValidation from '../../hooks/useFormAndValidation'
@@ -7,7 +8,6 @@ import './Profile.css'
 function Profile({ onProfileUpdate, onLogout, requestError }) {
   const currentUser = useContext(CurrentUserContext)
   const { name, email } = currentUser
-  const [user, setUser] = useState(currentUser)
   const { values, setValues, handleChange, errors, isValid } =
     useFormAndValidation()
 
@@ -18,15 +18,19 @@ function Profile({ onProfileUpdate, onLogout, requestError }) {
     navigate('/')
   }
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    onProfileUpdate(values)
+  }
+
   useEffect(() => {
     setValues({ name, email })
-    console.log('Profile useEffect')
   }, [name, email, setValues])
 
   return (
     <main>
       <section className='profile'>
-        <h1 className='profile__title'>Привет, {user.name}!</h1>
+        <h1 className='profile__title'>Привет, {name}!</h1>
         <form className='profile__form'>
           <div className='profile__row'>
             <label className='profile__label' htmlFor='name'>
@@ -71,6 +75,7 @@ function Profile({ onProfileUpdate, onLogout, requestError }) {
               disabled={
                 !isValid || (name === values.name && email === values.email)
               }
+              onClick={handleSubmit}
             >
               Редактировать
             </button>

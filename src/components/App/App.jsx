@@ -1,3 +1,4 @@
+// TODO: fix navigate to / even if user is authenticated
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
@@ -115,6 +116,7 @@ function App() {
                 loggedIn={loggedIn}
                 element={ProfilePage}
                 onLogout={handleLogout}
+                onProfileUpdate={handleProfileUpdate}
               />
             }
           />
