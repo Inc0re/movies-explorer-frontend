@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import useFormAndValidation from '../../hooks/useFormAndValidation'
 import './Profile.css'
 
-function Profile({onProfileUpdate, onLogout, requestError}) {
-  const [user, setUser] = useState({
-    name: 'Виталий',
-    email: 'test@ya.ru',
-  })
+function Profile({ onProfileUpdate, onLogout, requestError }) {
+  const currentUser = useContext(CurrentUserContext)
+  const { name, email } = currentUser
+  const [user, setUser] = useState(currentUser)
+  const { values, setValues, handleChange, errors, isValid } =
+    useFormAndValidation()
 
   const navigate = useNavigate()
 
@@ -15,10 +18,10 @@ function Profile({onProfileUpdate, onLogout, requestError}) {
     navigate('/')
   }
 
-  const handleChange = e => {
-    const { name, value } = e.target
-    setUser({ ...user, [name]: value })
-  }
+  useEffect(() => {
+    setValues({ name, email })
+    console.log('Profile useEffect')
+  }, [name, email, setValues])
 
   return (
     <main>
@@ -35,12 +38,15 @@ function Profile({onProfileUpdate, onLogout, requestError}) {
               name='name'
               id='name'
               placeholder='Иван'
-              value={user.name}
+              value={values.name || ''}
               onChange={handleChange}
               minLength={2}
               maxLength={30}
+              pattern='^[\s\-A-Za-zА-Яа-яЁё]+$'
+              title='Имя может содержать только буквы, дефисы и пробелы'
               required
             />
+            {errors.name && <p className='profile__error'>{errors.name}</p>}
           </div>
           <div className='profile__row'>
             <label className='profile__label' htmlFor='email'>
@@ -52,13 +58,20 @@ function Profile({onProfileUpdate, onLogout, requestError}) {
               name='email'
               id='email'
               placeholder='example@ya.ru'
-              value={user.email}
+              value={values.email || ''}
               onChange={handleChange}
               required
             />
+            {errors.email && <p className='profile__error'>{errors.email}</p>}
           </div>
           <div className='profile__buttons'>
-            <button className='profile__button' type='submit'>
+            <button
+              className='profile__button'
+              type='submit'
+              disabled={
+                !isValid || (name === values.name && email === values.email)
+              }
+            >
               Редактировать
             </button>
             <button
