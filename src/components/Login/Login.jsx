@@ -26,7 +26,6 @@ function Login({ handleLogin }) {
       onSubmit={handleLogin}
       type='login'
       fields={fields}
-      error='Что-то пошло не так...'
     />
   )
 }

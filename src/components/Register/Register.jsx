@@ -34,7 +34,6 @@ function Register({ handleRegister }) {
       onSubmit={handleRegister}
       type='register'
       fields={fields}
-      error='Что-то пошло не так...'
     />
   )
 }

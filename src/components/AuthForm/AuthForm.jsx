@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import useFormAndValidation from '../../hooks/useFormAndValidation'
 import './AuthForm.css'
 
-function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
+function AuthForm({ title, btnText, onSubmit, type, fields }) {
   const params =
     type === 'register'
       ? {
@@ -16,7 +16,7 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
           linkText: 'Регистрация',
           linkTo: '/signup',
         }
-  const { values, handleChange, errors } = useFormAndValidation()
+  const { values, handleChange, errors, isValid } = useFormAndValidation()
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -45,16 +45,18 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
                 minLength={field.minLength}
                 maxLength={field.maxLength}
               />
-              <span className='auth-form__error'>{errors[field.name] || ''}</span>
+              {errors[field.name] && (
+                <p className='auth-form__error'>{errors[field.name]}</p>
+              )}
             </Fragment>
           ))}
-          {error && <p className='auth-form__error'>{error}</p>}
           <button
             className={
               'auth-form__btn' +
               (type === 'login' ? ' auth-form__btn_margin_xl' : '')
             }
             type='submit'
+            disabled={!isValid}
           >
             {btnText}
           </button>
