@@ -20,7 +20,7 @@ function AuthForm({ title, btnText, onSubmit, type, fields }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    onSubmit(values)
+    console.log(values)
   }
 
   return (
@@ -44,6 +44,9 @@ function AuthForm({ title, btnText, onSubmit, type, fields }) {
                 required={field.isRequired}
                 minLength={field.minLength}
                 maxLength={field.maxLength}
+                autoComplete={field.autoComplete}
+                pattern={field.pattern && field.pattern.source}
+                title={field.title}
               />
               {errors[field.name] && (
                 <p className='auth-form__error'>{errors[field.name]}</p>

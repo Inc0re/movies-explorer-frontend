@@ -9,6 +9,9 @@ function Register({ handleRegister }) {
       isRequired: true,
       minLength: 2,
       maxLength: 30,
+      autocomplete: 'off',
+      pattern: /^[A-Za-zА-Яа-яЁё\s-]+$/,
+      title: 'Имя может содержать только буквы, дефисы и пробелы',
     },
     {
       name: 'email',
@@ -17,6 +20,7 @@ function Register({ handleRegister }) {
       isRequired: true,
       minLength: 2,
       maxLength: 320,
+      autocomplete: 'off',
     },
     {
       name: 'password',
@@ -25,13 +29,19 @@ function Register({ handleRegister }) {
       isRequired: true,
       minLength: 8,
       maxLength: 30,
+      autocomplete: 'off',
     },
   ]
+
+  function handleRegister(data) {
+    console.log(data)
+  }
+
   return (
     <AuthForm
       title='Добро пожаловать!'
       btnText='Зарегистрироваться'
-      onSubmit={handleRegister}
+      // onSubmit={handleRegister}
       type='register'
       fields={fields}
     />
