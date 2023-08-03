@@ -1,10 +1,10 @@
 import Header from '../Header/Header'
 import Profile from '../Profile/Profile'
 
-function ProfilePage() {
+function ProfilePage({ loggedIn }) {
   return (
     <>
-      <Header />
+      <Header loggedIn={loggedIn} />
       <Profile />
     </>
   )

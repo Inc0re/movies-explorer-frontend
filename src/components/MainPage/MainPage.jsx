@@ -2,10 +2,10 @@ import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import Main from '../Main/Main'
 
-function MainPage() {
+function MainPage({ loggedIn }) {
   return (
     <>
-      <Header />
+      <Header loggedIn={loggedIn} />
       <Main />
       <Footer />
     </>
