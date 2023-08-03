@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import useFormAndValidation from '../../hooks/useFormAndValidation'
 import './AuthForm.css'
 
-function AuthForm({ title, btnText, onSubmit, type, fields }) {
+function AuthForm({ title, btnText, onSubmit, type, fields, requestError }) {
   const params =
     type === 'register'
       ? {
@@ -20,7 +20,7 @@ function AuthForm({ title, btnText, onSubmit, type, fields }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log(values)
+    onSubmit(values)
   }
 
   return (
@@ -53,6 +53,7 @@ function AuthForm({ title, btnText, onSubmit, type, fields }) {
               )}
             </Fragment>
           ))}
+          {requestError && <p className='auth-form__error'>{requestError}</p>}
           <button
             className={
               'auth-form__btn' +

@@ -9,10 +9,24 @@ import MainPage from '../MainPage/MainPage'
 import MoviesPage from '../MoviesPage/MoviesPage'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import ProfilePage from '../ProfilePage/ProfilePage'
+import mainApi from '../../utils/MainApi'
 
 function App() {
+  const [apiError, setApiError] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
+
+  const handleRegister = data => {
+    mainApi
+      .register(data)
+      .then(res => {
+        setLoggedIn(true)
+      })
+      .catch(err => {
+        console.log(err)
+        setApiError(err.message)
+      })
+  }
 
   return (
     <div className='app'>
@@ -57,6 +71,8 @@ function App() {
                 path='/'
                 loggedIn={!loggedIn}
                 element={Register}
+                handleRegister={handleRegister}
+                apiError={apiError}
               />
             }
           />

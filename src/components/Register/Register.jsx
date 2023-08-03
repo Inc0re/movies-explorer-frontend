@@ -1,6 +1,6 @@
 import AuthForm from '../AuthForm/AuthForm'
 
-function Register({ handleRegister }) {
+function Register({ handleRegister, apiError }) {
   const fields = [
     {
       name: 'name',
@@ -10,7 +10,7 @@ function Register({ handleRegister }) {
       minLength: 2,
       maxLength: 30,
       autocomplete: 'off',
-      pattern: /^[A-Za-zА-Яа-яЁё\s-]+$/,
+      pattern: /^[\s\-A-Za-zА-Яа-яЁё]+$/,
       title: 'Имя может содержать только буквы, дефисы и пробелы',
     },
     {
@@ -33,17 +33,14 @@ function Register({ handleRegister }) {
     },
   ]
 
-  function handleRegister(data) {
-    console.log(data)
-  }
-
   return (
     <AuthForm
       title='Добро пожаловать!'
       btnText='Зарегистрироваться'
-      // onSubmit={handleRegister}
+      onSubmit={handleRegister}
       type='register'
       fields={fields}
+      requestError={apiError}
     />
   )
 }
