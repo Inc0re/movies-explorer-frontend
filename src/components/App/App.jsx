@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import NotFound from '../NotFound/NotFound'
@@ -42,6 +42,45 @@ function App() {
       })
   }
 
+  const handleLogout = () => {
+    mainApi
+      .logout()
+      .then(res => {
+        setLoggedIn(false)
+        setApiError('')
+      })
+      .catch(err => {
+        console.log(err)
+        setApiError(err.message)
+      })
+  }
+
+  const handleProfileUpdate = data => {
+    mainApi
+      .updateUserInfo(data)
+      .then(res => {
+        setCurrentUser(res)
+        setApiError('')
+      })
+      .catch(err => {
+        console.log(err)
+        setApiError(err.message)
+      })
+  }
+
+  useEffect(() => {
+    mainApi
+      .getUserInfo()
+      .then(res => {
+        setCurrentUser(res.data)
+        console.log(res.data)
+        setLoggedIn(true)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [loggedIn])
+
   return (
     <div className='app'>
       <CurrentUserContext.Provider value={currentUser}>
@@ -75,6 +114,7 @@ function App() {
                 path='/'
                 loggedIn={loggedIn}
                 element={ProfilePage}
+                onLogout={handleLogout}
               />
             }
           />
