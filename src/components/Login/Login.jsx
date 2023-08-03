@@ -1,6 +1,6 @@
 import AuthForm from '../AuthForm/AuthForm'
 
-function Login({ handleLogin }) {
+function Login({ handleLogin, apiError }) {
   const fields = [
     {
       name: 'email',
@@ -26,6 +26,7 @@ function Login({ handleLogin }) {
       onSubmit={handleLogin}
       type='login'
       fields={fields}
+      requestError={apiError}
     />
   )
 }

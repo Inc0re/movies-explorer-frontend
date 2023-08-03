@@ -21,6 +21,20 @@ function App() {
       .register(data)
       .then(res => {
         setLoggedIn(true)
+        setApiError('')
+      })
+      .catch(err => {
+        console.log(err)
+        setApiError(err.message)
+      })
+  }
+
+  const handleLogin = data => {
+    mainApi
+      .login(data)
+      .then(res => {
+        setLoggedIn(true)
+        setApiError('')
       })
       .catch(err => {
         console.log(err)
@@ -79,7 +93,13 @@ function App() {
           <Route
             path='/signin'
             element={
-              <ProtectedRoute path='/' loggedIn={!loggedIn} element={Login} />
+              <ProtectedRoute
+                path='/'
+                loggedIn={!loggedIn}
+                element={Login}
+                handleLogin={handleLogin}
+                apiError={apiError}
+              />
             }
           />
           <Route path='*' element={<NotFound />} />
