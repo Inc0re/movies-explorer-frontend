@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Profile.css'
 
-function Profile() {
+function Profile({onProfileUpdate, onLogout, requestError}) {
   const [user, setUser] = useState({
     name: 'Виталий',
     email: 'test@ya.ru',
@@ -11,6 +11,7 @@ function Profile() {
   const navigate = useNavigate()
 
   const handleLogout = () => {
+    onLogout()
     navigate('/')
   }
 
