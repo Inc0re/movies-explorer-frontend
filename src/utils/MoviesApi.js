@@ -19,7 +19,6 @@ class MoviesApi {
     }).then(this._getJson)
   }
 
-  //todo: add functions for api requests
   getMovies() {
     return this._request(`${this._baseUrl}`, {
       method: 'GET',
@@ -28,7 +27,6 @@ class MoviesApi {
   }
 }
 
-//TODO: replace with your own API address
 const api = new MoviesApi({
   baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
   headers: {
