@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import useForm from '../../hooks/useForm'
+import useFormAndValidation from '../../hooks/useFormAndValidation'
 import './AuthForm.css'
 
 function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
@@ -16,7 +16,7 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
           linkText: 'Регистрация',
           linkTo: '/signup',
         }
-  const { values, handleChange } = useForm({})
+  const { values, handleChange, errors } = useFormAndValidation()
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -45,6 +45,7 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
                 minLength={field.minLength}
                 maxLength={field.maxLength}
               />
+              <span className='auth-form__error'>{errors[field.name] || ''}</span>
             </Fragment>
           ))}
           {error && <p className='auth-form__error'>{error}</p>}
