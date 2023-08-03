@@ -48,6 +48,15 @@ class Api {
     });
   }
 
+  updateUserInfo({ name, email }) {
+    return this._request(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({ name, email }),
+    });
+  }
+  
+
 }
 
 const api = new Api({
