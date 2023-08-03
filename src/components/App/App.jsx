@@ -1,16 +1,9 @@
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-// import FullPage from '../FullPage/FullPage'
-import Main from '../Main/Main'
-import Movies from '../Movies/Movies'
-// import Footer from '../Footer/Footer'
 import NotFound from '../NotFound/NotFound'
 import Register from '../Register/Register'
 import Login from '../Login/Login'
-import Profile from '../Profile/Profile'
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
 import './App.css'
 import MainPage from '../MainPage/MainPage'
 import MoviesPage from '../MoviesPage/MoviesPage'
@@ -18,14 +11,14 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import ProfilePage from '../ProfilePage/ProfilePage'
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
 
   return (
     <div className='app'>
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route path='/' element={<MainPage />} />
+          <Route path='/' element={<MainPage loggedIn={loggedIn} />} />
           <Route
             path='/movies'
             element={
@@ -42,14 +35,8 @@ function App() {
               <ProtectedRoute
                 path='/'
                 loggedIn={loggedIn}
-                element={
-                  <ProtectedRoute
-                    path='/'
-                    loggedIn={loggedIn}
-                    isSaved={true}
-                    element={MoviesPage}
-                  />
-                }
+                element={MoviesPage}
+                isSaved={true}
               />
             }
           />
