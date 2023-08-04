@@ -82,26 +82,23 @@ function Movies({ isSaved }) {
     const moviesToLoad = calcMoviesToLoad()
     const moviesLeft = filteredMovies.length - displayedMovies.length
     if (moviesLeft > moviesToLoad) {
-      setDisplayedMovies(
-        [
-          ...displayedMovies,
-          ...filteredMovies.slice(
-            displayedMovies.length,
-            displayedMovies.length + moviesToLoad
-          ),
-        ]
-      )
+      setDisplayedMovies([
+        ...displayedMovies,
+        ...filteredMovies.slice(
+          displayedMovies.length,
+          displayedMovies.length + moviesToLoad
+        ),
+      ])
     } else {
-      setDisplayedMovies(
-        [
-          ...displayedMovies,
-          ...filteredMovies.slice(
-            displayedMovies.length,
-            filteredMovies.length
-          ),
-        ]
-      )
+      setDisplayedMovies([
+        ...displayedMovies,
+        ...filteredMovies.slice(displayedMovies.length, filteredMovies.length),
+      ])
     }
+  }
+
+  function handleMovieSave(e) {
+
   }
 
   // главная функция поиска фильмов
@@ -156,14 +153,16 @@ function Movies({ isSaved }) {
         {currentState === 'loading' ? (
           <Preloader />
         ) : currentState === 'loaded' ? (
-          <MoviesCardList isSaved={isSaved} cards={displayedMovies} />
+          <MoviesCardList isSaved={isSaved} cards={displayedMovies} onSave={handleMovieSave} />
         ) : (
           <p className='movies__text'>{pageText}</p>
         )}
       </section>
-      {!isSaved && currentState === 'loaded' && filteredMovies.length > displayedMovies.length && (
-        <Pagination onLoadMore={handleLoadMore} />
-      )}
+      {!isSaved &&
+        currentState === 'loaded' &&
+        filteredMovies.length > displayedMovies.length && (
+          <Pagination onLoadMore={handleLoadMore} />
+        )}
     </main>
   )
 }
