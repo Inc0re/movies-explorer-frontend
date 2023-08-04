@@ -2,30 +2,23 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 import './MoviesCardList.css'
 // import cards from './cardsList'
 
-function MoviesCardList({ isSaved, cards }) {
+function MoviesCardList({ isSaved, cards, onSave }) {
   return (
     <ul className={'cards' + (isSaved ? ' cards_padding_bottom' : '')}>
-      {isSaved
-        ? cards
-            .filter(card => card.isSaved)
-            .map(card => {
-              return (
-                <MoviesCard
-                  card={card}
-                  key={card.id}
-                  savedClass={'movie-card__button_remove'}
-                />
-              )
-            })
-        : cards.map(card => {
-            return (
-              <MoviesCard
-                card={card}
-                key={card.id}
-                savedClass={'movie-card__button_saved'}
-              />
-            )
-          })}
+      {cards.map(card => {
+        return (
+          <MoviesCard
+            card={card}
+            key={card.id}
+            savedClass={
+              isSaved
+                ? 'movie-card__button_saved'
+                : 'movie-card__button_remove'
+            }
+            onSave={onSave}
+          />
+        )
+      })}
     </ul>
   )
 }
