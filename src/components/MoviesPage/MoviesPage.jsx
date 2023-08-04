@@ -3,6 +3,7 @@ import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import Movies from '../Movies/Movies'
 import moviesApi from '../../utils/MoviesApi'
+import mainApi from '../../utils/MainApi'
 import { filterByDuration, filterByTitle } from '../../utils/moviesFilters'
 
 function MoviesPage({ loggedIn, isSaved }) {
@@ -45,6 +46,20 @@ function MoviesPage({ loggedIn, isSaved }) {
           console.log(err)
         })
     }
+
+    setSavedCurrentState('loading')
+    mainApi
+      .getMovies()
+      .then(res => {
+        console.log(res)
+        console.log(res.data)
+        setSavedMovies(res.data)
+        setSavedFilteredMovies(res.data)
+        setSavedCurrentState('loaded')
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }, [])
 
   // при переключении тумблера вызываем поиск
@@ -106,13 +121,13 @@ function MoviesPage({ loggedIn, isSaved }) {
     }
   }
 
-  function handleMovieSave(e) {
+  function handleMovieBtnClick(e) {
     console.log(e)
   }
 
-  function handleMovieDelete(e) {
-    console.log(e)
-  }
+  function handleMovieSave() {}
+
+  function handleMovieDelete() {}
 
   // главная функция поиска фильмов
   function searchMovies() {
@@ -161,14 +176,14 @@ function MoviesPage({ loggedIn, isSaved }) {
           isSaved={isSaved}
           currentState={savedCurrentState}
           filteredMovies={savedFilteredMovies}
-          // displayedMovies={savedFilteredMovies}
+          displayedMovies={savedFilteredMovies}
           searchQuery={savedSearchQuery}
           tumblerState={savedTumblerState}
           pageText={savedPageText}
           handleSearch={handleSearch}
           handleTumblerSwitch={handleTumblerSwitch}
           handleSearchQueryChange={handleSearchQueryChange}
-          handleMovieBtnClick={handleMovieDelete}
+          handleMovieBtnClick={handleMovieBtnClick}
         />
       ) : (
         <Movies
@@ -183,7 +198,7 @@ function MoviesPage({ loggedIn, isSaved }) {
           handleTumblerSwitch={handleTumblerSwitch}
           handleSearchQueryChange={handleSearchQueryChange}
           handleLoadMore={handleLoadMore}
-          handleMovieBtnClick={handleMovieSave}
+          handleMovieBtnClick={handleMovieBtnClick}
         />
       )}
 
