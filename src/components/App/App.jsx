@@ -65,6 +65,8 @@ function App() {
         console.log(err)
         setApiError(err.message)
       })
+
+    localStorage.removeItem('savedSearch')
   }
 
   const handleProfileUpdate = data => {
