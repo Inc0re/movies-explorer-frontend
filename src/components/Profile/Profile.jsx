@@ -1,5 +1,5 @@
 // TODO: fix form reset after submit
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import useFormAndValidation from '../../hooks/useFormAndValidation'
@@ -7,9 +7,20 @@ import './Profile.css'
 
 function Profile({ onProfileUpdate, onLogout, requestError }) {
   const currentUser = useContext(CurrentUserContext)
-  const { name, email } = currentUser
-  const { values, setValues, handleChange, errors, isValid } =
+
+  const { values, setValues, handleChange, errors, isValid, resetForm } =
     useFormAndValidation()
+
+  useEffect(() => {
+    // wait for currentUser to be loaded and then set form values
+    if (currentUser.name) {
+      setValues({
+        name: currentUser.name,
+        email: currentUser.email,
+      })
+      console.log('Profile useEffect')
+    }
+  }, [currentUser])
 
   const navigate = useNavigate()
 
@@ -21,16 +32,18 @@ function Profile({ onProfileUpdate, onLogout, requestError }) {
   const handleSubmit = e => {
     e.preventDefault()
     onProfileUpdate(values)
+    resetForm(
+      {
+        name: values.name,
+        email: values.email,
+      },
+    )
   }
-
-  useEffect(() => {
-    setValues({ name, email })
-  }, [name, email, setValues])
 
   return (
     <main>
       <section className='profile'>
-        <h1 className='profile__title'>Привет, {name}!</h1>
+        <h1 className='profile__title'>Привет, {values.name || ''}!</h1>
         <form className='profile__form'>
           <div className='profile__row'>
             <label className='profile__label' htmlFor='name'>
@@ -73,7 +86,9 @@ function Profile({ onProfileUpdate, onLogout, requestError }) {
               className='profile__button'
               type='submit'
               disabled={
-                !isValid || (name === values.name && email === values.email)
+                !isValid ||
+                (values.name === currentUser.name &&
+                  values.email === currentUser.email)
               }
               onClick={handleSubmit}
             >
