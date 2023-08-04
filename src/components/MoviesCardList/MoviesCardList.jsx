@@ -1,8 +1,8 @@
 import MoviesCard from '../MoviesCard/MoviesCard'
 import './MoviesCardList.css'
-import cards from './cardsList'
+// import cards from './cardsList'
 
-function MoviesCardList({ isSaved }) {
+function MoviesCardList({ isSaved, cards }) {
   return (
     <ul className={'cards' + (isSaved ? ' cards_padding_bottom' : '')}>
       {isSaved
@@ -12,7 +12,7 @@ function MoviesCardList({ isSaved }) {
               return (
                 <MoviesCard
                   card={card}
-                  key={card._id}
+                  key={card.id}
                   savedClass={'movie-card__button_remove'}
                 />
               )
@@ -21,7 +21,7 @@ function MoviesCardList({ isSaved }) {
             return (
               <MoviesCard
                 card={card}
-                key={card._id}
+                key={card.id}
                 savedClass={'movie-card__button_saved'}
               />
             )

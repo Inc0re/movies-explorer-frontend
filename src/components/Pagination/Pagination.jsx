@@ -1,9 +1,9 @@
 import './Pagination.css'
 
-function Pagination() {
+function Pagination({ onLoadMore }) {
   return (
     <div className='pagination'>
-      <button className='pagination__button' type='button'>
+      <button className='pagination__button' type='button' onClick={onLoadMore}>
         Ещё
       </button>
     </div>
