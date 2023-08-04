@@ -12,13 +12,11 @@ function Profile({ onProfileUpdate, onLogout, requestError }) {
     useFormAndValidation()
 
   useEffect(() => {
-    // wait for currentUser to be loaded and then set form values
     if (currentUser.name) {
       setValues({
         name: currentUser.name,
         email: currentUser.email,
       })
-      console.log('Profile useEffect')
     }
   }, [currentUser])
 
