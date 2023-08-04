@@ -124,4 +124,8 @@ function filterByDuration(movies = [], duration = 0) {
   return movies.filter(movie => movie.duration <= duration)
 }
 
-export { filterByTitle, filterByDuration }
+function checkSavedMovie(movie = {}, savedMovies = []) {
+  return savedMovies.some(savedMovie => savedMovie.movieId === movie.id)
+}
+
+export { filterByTitle, filterByDuration, checkSavedMovie }
