@@ -9,13 +9,14 @@ function MoviesCardList({ isSaved, cards, onSave }) {
         return (
           <MoviesCard
             card={card}
-            key={card.id}
+            key={isSaved ? card.movieId : card.id}
             savedClass={
               isSaved
                 ? 'movie-card__button_saved'
                 : 'movie-card__button_remove'
             }
             onSave={onSave}
+            isSaved={isSaved}
           />
         )
       })}
