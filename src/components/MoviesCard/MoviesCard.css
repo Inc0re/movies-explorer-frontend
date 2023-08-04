@@ -92,6 +92,19 @@
   background-position: center;
 }
 
+.movie-card__link {
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  transition: opacity 0.3s linear;
+}
+
+.movie-card__link:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 425px) {
   .movie-card__title {
     font-size: 12px;
