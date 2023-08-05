@@ -63,7 +63,7 @@ class Api {
     })
   }
 
-  addMovie({
+  saveMovie({
     country,
     director,
     duration,
