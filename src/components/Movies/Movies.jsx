@@ -27,6 +27,7 @@ function Movies({
         tumblerState={tumblerState}
         onSearchQueryChange={handleSearchQueryChange}
         searchQuery={searchQuery}
+        isSaved={isSaved}
       />
       <section>
         {currentState === 'loading' ? (
