@@ -4,7 +4,11 @@ import Header from '../Header/Header'
 import Movies from '../Movies/Movies'
 import moviesApi from '../../utils/MoviesApi'
 import mainApi from '../../utils/MainApi'
-import { searchMovies, loadMore } from '../../utils/moviesFilters'
+import {
+  searchMovies,
+  loadMore,
+  updateMoviesIfSaved,
+} from '../../utils/moviesFilters'
 
 function MoviesPage({ loggedIn, isSaved }) {
   // стейты для /movies
@@ -26,40 +30,50 @@ function MoviesPage({ loggedIn, isSaved }) {
   const [savedTumblerState, setSavedTumblerState] = useState(false)
   const [savedSearchQuery, setSavedSearchQuery] = useState('')
 
+  function getSavedMoviesAndUpdateMovies(savedSearch) {
+    mainApi.getMovies().then(res => {
+      const newMovies = updateMoviesIfSaved(savedSearch.movies, res.data)
+      setSavedMovies(res.data)
+      setSavedFilteredMovies(res.data)
+      setSavedCurrentState('loaded')
+      setMovies(newMovies)
+    })
+  }
+
+  async function getAllMovies() {
+    try {
+      const moviesRes = await moviesApi.getMovies()
+      const savedMoviesRes = await mainApi.getMovies()
+      const newMovies = updateMoviesIfSaved(moviesRes, savedMoviesRes.data)
+      setSavedMovies(savedMoviesRes.data)
+      setSavedFilteredMovies(savedMoviesRes.data)
+      setSavedCurrentState('loaded')
+      setMovies(newMovies)
+    } catch (err) {
+      console.log(err)
+      setCurrentState('')
+      setPageText(
+        `Во время запроса произошла ошибка.
+          Возможно, проблема с соединением или сервер недоступен.
+          Подождите немного и попробуйте ещё раз`
+      )
+    }
+  }
+
   // при монтировании компонента проверяем, есть ли сохраненные результаты поиска в localStorage
   useEffect(() => {
     const savedSearch = JSON.parse(localStorage.getItem('savedSearch'))
     if (savedSearch) {
       setCurrentState(savedSearch.currentState)
-      setMovies(savedSearch.movies)
+      // setMovies(savedSearch.movies)
       setFilteredMovies(savedSearch.filteredMovies)
       setDisplayedMovies(savedSearch.displayedMovies)
       setSearchQuery(savedSearch.searchQuery)
       setTumblerState(savedSearch.tumblerState)
+      getSavedMoviesAndUpdateMovies(savedSearch)
     } else {
-      moviesApi
-        .getMovies()
-        .then(res => {
-          setMovies(res)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      getAllMovies()
     }
-
-    setSavedCurrentState('loading')
-    mainApi
-      .getMovies()
-      .then(res => {
-        console.log(res)
-        console.log(res.data)
-        setSavedMovies(res.data)
-        setSavedFilteredMovies(res.data)
-        setSavedCurrentState('loaded')
-      })
-      .catch(err => {
-        console.log(err)
-      })
   }, [])
 
   // при переключении тумблера фильтруем уже найденное по времени
@@ -94,21 +108,14 @@ function MoviesPage({ loggedIn, isSaved }) {
     if (currentState === 'loaded') {
       setLocalStorage()
     }
-  }, [filteredMovies, displayedMovies, searchQuery, tumblerState])
-
-  // при изменении массива сохраненных фильмов проверяем какие из фильмов есть в массиве всех фильмов и меняем у них флаг isSaved
-  useEffect(() => {
-    if (savedCurrentState === 'loaded') {
-      const newMovies = movies.map(movie => {
-        if (savedMovies.find(savedMovie => savedMovie.movieId === movie.id)) {
-          return { ...movie, isSaved: true }
-        } else {
-          return { ...movie, isSaved: false }
-        }
-      })
-      setMovies(newMovies)
-    }
-  }, [savedMovies])
+  }, [
+    currentState,
+    movies,
+    filteredMovies,
+    displayedMovies,
+    searchQuery,
+    tumblerState,
+  ])
 
   function handleSearch(e) {
     e.preventDefault()
