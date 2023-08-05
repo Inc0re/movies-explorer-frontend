@@ -27,6 +27,7 @@ function SearchForm({
             label='Короткометражки'
             onTumblerSwitch={onTumblerSwitch}
             tumblerState={tumblerState}
+            isDisabled={searchQuery === ''}
           />
         </fieldset>
       </form>
