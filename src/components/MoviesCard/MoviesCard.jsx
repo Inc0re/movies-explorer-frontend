@@ -1,11 +1,28 @@
 import './MoviesCard.css'
 
 function MoviesCard({ card, savedClass, onSave, isSaved }) {
-  const { nameRU, duration, image, trailerLink } = card
+  const { nameRU, duration, image, trailerLink, isCardSaved = false } = card
 
   function handleCardSave() {
     onSave(card)
   }
+
+  function getClassAndButtonText() {
+    const baseClass = 'movie-card__button'
+    let classes = ''
+    let text = ''
+    if (isSaved) {
+      classes = baseClass + ' movie-card__button_remove'
+    } else if (isCardSaved) {
+      classes = baseClass + ' movie-card__button_saved'
+    } else {
+      classes = baseClass
+      text = 'Сохранить'
+    }
+    return { classes, text }
+  }
+
+  const cardConfig = getClassAndButtonText()
 
   function getDurationText() {
     if (duration < 60) {
@@ -36,11 +53,11 @@ function MoviesCard({ card, savedClass, onSave, isSaved }) {
         />
       </a>
       <button
-        className={`movie-card__button${isSaved ? ` ${savedClass}` : ''}`}
+        className={cardConfig.classes}
         type='button'
         onClick={handleCardSave}
       >
-        {!isSaved && 'Сохранить'}
+        {cardConfig.text}
       </button>
     </li>
   )
