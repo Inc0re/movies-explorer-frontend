@@ -10,11 +10,6 @@ function MoviesCardList({ isSaved, cards, onSave }) {
           <MoviesCard
             card={card}
             key={isSaved ? card.movieId : card.id}
-            savedClass={
-              isSaved
-                ? 'movie-card__button_saved'
-                : 'movie-card__button_remove'
-            }
             onSave={onSave}
             isSaved={isSaved}
           />
