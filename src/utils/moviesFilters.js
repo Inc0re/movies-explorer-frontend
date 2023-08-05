@@ -92,11 +92,7 @@ function calcMoviesToLoad() {
 }
 
 // функция подгрузки фильмов
-function loadMore(
-  displayedMoviesSetter,
-  displayedMovies,
-  filteredMovies
-) {
+function loadMore(displayedMoviesSetter, displayedMovies, filteredMovies) {
   const moviesToLoad = calcMoviesToLoad()
   const moviesLeft = filteredMovies.length - displayedMovies.length
   if (moviesLeft > moviesToLoad) {
@@ -129,7 +125,6 @@ function searchMovies(
   currentStateSetter('loading')
   // фильтруем фильмы по имени
   let filteredMovies = filterByTitle(movies, searchQuery)
-
   // если включен тумблер, фильтруем еще и по длительности
   if (tumblerState) {
     filteredMovies = filterByDuration(filteredMovies, 40)
@@ -153,4 +148,22 @@ function searchMovies(
   }
 }
 
-export { filterByTitle, filterByDuration, loadMore, searchMovies }
+function updateMoviesIfSaved(movies, savedMovies) {
+  // console.log(`${movies.length} ${savedMovies.length}`)
+  const newMovies = movies.map(movie => {
+    if (savedMovies.find(savedMovie => savedMovie.movieId === movie.id)) {
+      return { ...movie, isCardSaved: true }
+    } else {
+      return { ...movie, isCardSaved: false }
+    }
+  })
+  return newMovies
+}
+
+export {
+  filterByTitle,
+  filterByDuration,
+  loadMore,
+  searchMovies,
+  updateMoviesIfSaved,
+}
