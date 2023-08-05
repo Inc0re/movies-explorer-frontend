@@ -151,8 +151,9 @@ function searchMovies(
 function updateMoviesIfSaved(movies, savedMovies) {
   // console.log(`${movies.length} ${savedMovies.length}`)
   const newMovies = movies.map(movie => {
-    if (savedMovies.find(savedMovie => savedMovie.movieId === movie.id)) {
-      return { ...movie, isCardSaved: true }
+    let foundCard = savedMovies.find(savedMovie => savedMovie.movieId === movie.id)
+    if (foundCard) {
+      return { ...movie, isCardSaved: true, _id: foundCard._id }
     } else {
       return { ...movie, isCardSaved: false }
     }

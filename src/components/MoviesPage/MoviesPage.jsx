@@ -103,19 +103,19 @@ function MoviesPage({ loggedIn, isSaved }) {
     )
   }, [savedTumblerState])
 
-  // при изменении одного из стейтов хранимых в localStorage, обновляем localStorage
-  useEffect(() => {
-    if (currentState === 'loaded') {
-      setLocalStorage()
-    }
-  }, [
-    currentState,
-    movies,
-    filteredMovies,
-    displayedMovies,
-    searchQuery,
-    tumblerState,
-  ])
+  // // при изменении одного из стейтов хранимых в localStorage, обновляем localStorage
+  // useEffect(() => {
+  //   if (currentState === 'loaded') {
+  //     setLocalStorage()
+  //   }
+  // }, [
+  //   currentState,
+  //   movies,
+  //   filteredMovies,
+  //   displayedMovies,
+  //   searchQuery,
+  //   tumblerState,
+  // ])
 
   function handleSearch(e) {
     e.preventDefault()
@@ -160,7 +160,7 @@ function MoviesPage({ loggedIn, isSaved }) {
   }
 
   function handleMovieBtnClick(e) {
-    if (e.isSaved) {
+    if (e.isCardSaved || isSaved) {
       handleMovieDelete(e)
     } else {
       handleMovieSave(e)
@@ -169,6 +169,8 @@ function MoviesPage({ loggedIn, isSaved }) {
 
   // TODO: добавить проверку на то, что фильм уже сохранен
   function handleMovieSave(m) {
+    // if (m.isCardSaved) return
+    console.log(m)
     mainApi
       .saveMovie({
         movieId: m.id,
@@ -186,7 +188,12 @@ function MoviesPage({ loggedIn, isSaved }) {
         description: m.description,
       })
       .then(res => {
+        m.isCardSaved = true
+        m._id = res.data._id
         setSavedMovies([...savedMovies, res.data])
+        if (!savedSearchQuery) {
+          setSavedFilteredMovies([...savedFilteredMovies, res.data])
+        }
       })
       .catch(err => {
         console.log(err)
@@ -195,6 +202,15 @@ function MoviesPage({ loggedIn, isSaved }) {
 
   function handleMovieDelete(m) {
     console.log(m)
+    mainApi.deleteMovie(m._id).then(res => {
+      m.isCardSaved = false
+      setSavedMovies(savedMovies.filter(movie => movie._id !== m._id))
+      if (!savedSearchQuery) {
+        setSavedFilteredMovies(
+          savedFilteredMovies.filter(movie => movie._id !== m._id)
+        )
+      }
+    })
   }
 
   function setLocalStorage() {
