@@ -78,7 +78,15 @@ function MoviesPage({ loggedIn, isSaved }) {
 
   useEffect(() => {
     if (!currentState === 'loaded' || searchQuery === '') return
-    searchMovies()
+    searchMovies(
+      setSavedCurrentState,
+      setSavedPageText,
+      setSavedFilteredMovies,
+      null,
+      savedMovies,
+      savedSearchQuery,
+      savedTumblerState
+    )
   }, [savedTumblerState])
 
   // при изменении одного из стейтов хранимых в localStorage, обновляем localStorage
