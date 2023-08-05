@@ -7,6 +7,7 @@ function SearchForm({
   tumblerState,
   onSearchQueryChange,
   searchQuery,
+  isSaved,
 }) {
   return (
     <section className='search-form'>
@@ -19,7 +20,11 @@ function SearchForm({
             value={searchQuery}
             required
           />
-          <button className='search-form__button' type='submit' />
+          <button
+            className='search-form__button'
+            type='submit'
+            disabled={searchQuery === ''}
+          />
         </fieldset>
         <fieldset className='search-form__fieldset'>
           <FilterCheckbox
@@ -27,7 +32,7 @@ function SearchForm({
             label='Короткометражки'
             onTumblerSwitch={onTumblerSwitch}
             tumblerState={tumblerState}
-            isDisabled={searchQuery === ''}
+            isDisabled={isSaved ? false : searchQuery === ''}
           />
         </fieldset>
       </form>
