@@ -5,11 +5,10 @@ import Movies from '../Movies/Movies'
 import moviesApi from '../../utils/MoviesApi'
 import mainApi from '../../utils/MainApi'
 import {
-  loadMore,
+  loadMovies,
   updateMoviesIfSaved,
   filterByTitle,
   filterByDuration,
-  calcInitialMovies,
 } from '../../utils/moviesFilters'
 
 function MoviesPage({ loggedIn, isSaved }) {
@@ -21,6 +20,7 @@ function MoviesPage({ loggedIn, isSaved }) {
   const [displayedMovies, setDisplayedMovies] = useState([])
   const [tumblerState, setTumblerState] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [pagination, setPagination] = useState(0)
 
   // стейты для /saved-movies
   const [savedPageText, setSavedPageText] = useState('')
@@ -37,9 +37,14 @@ function MoviesPage({ loggedIn, isSaved }) {
   }, [movies])
 
   useEffect(() => {
-    setDisplayedMovies(
-      filteredMovies.slice(0, calcInitialMovies(filteredMovies.length))
-    )
+    if (filteredMovies.length && searchQuery.length) {
+      const newDisplayedMovies = loadMovies(
+        displayedMovies,
+        filteredMovies,
+        pagination
+      )
+      setDisplayedMovies(newDisplayedMovies)
+    }
     if (!filteredMovies.length && movies.length) {
       setDisplayedMovies([])
     }
@@ -74,6 +79,9 @@ function MoviesPage({ loggedIn, isSaved }) {
     ) {
       setSavedPageText('Ничего не найдено')
       setSavedCurrentState('')
+    } else if (!savedMovies.length) {
+      setSavedPageText('У вас пока нет сохраненных фильмов')
+      setSavedCurrentState('')
     } else {
       setSavedPageText('')
       setSavedCurrentState('loaded')
@@ -87,6 +95,7 @@ function MoviesPage({ loggedIn, isSaved }) {
       setMovies(savedSearch.movies)
       setSearchQuery(savedSearch.searchQuery)
       setTumblerState(savedSearch.tumblerState)
+      setPagination(savedSearch.pagination)
     }
 
     mainApi
@@ -106,7 +115,7 @@ function MoviesPage({ loggedIn, isSaved }) {
     if (currentState === 'loaded') {
       setLocalStorage()
     }
-  }, [currentState, movies, searchQuery, tumblerState])
+  }, [currentState, movies, searchQuery, tumblerState, pagination])
 
   // при изменении тумблера - фильтруем фильмы
   useEffect(() => {
@@ -116,6 +125,18 @@ function MoviesPage({ loggedIn, isSaved }) {
   useEffect(() => {
     filterMovies(true)
   }, [savedTumblerState])
+
+  // при изменении pagination - загружаем еще фильмы на страницу
+  useEffect(() => {
+    if (pagination > 0) {
+      const newDisplayedMovies = loadMovies(
+        displayedMovies,
+        filteredMovies,
+        pagination
+      )
+      setDisplayedMovies(newDisplayedMovies)
+    }
+  }, [pagination])
 
   // функция для маркировки сохраненных фильмов в списке всех фильмов
   function markSavedMovies() {
@@ -142,6 +163,7 @@ function MoviesPage({ loggedIn, isSaved }) {
           setCurrentState('')
         })
     } else {
+      setPagination(0)
       filterMovies()
     }
   }
@@ -262,7 +284,7 @@ function MoviesPage({ loggedIn, isSaved }) {
   }
 
   function handleSavedMovieDelete(m) {
-    console.log(m)
+    // console.log(m)
     mainApi
       .deleteMovie(m._id)
       .then(res => {
@@ -282,12 +304,13 @@ function MoviesPage({ loggedIn, isSaved }) {
         movies,
         searchQuery,
         tumblerState,
+        pagination,
       })
     )
   }
 
   function handleLoadMore() {
-    loadMore()
+    setPagination(pagination + 1)
   }
 
   return (
