@@ -5,28 +5,20 @@ import './SearchForm.css'
 function SearchForm({
   onSubmit,
   onTumblerSwitch,
-  tumblerState,
   onSearchQueryChange,
+  onKeyDown,
+  tumblerState,
   searchQuery,
   isSaved,
 }) {
   // ставим обработчик сабмита формы при нажатии на enter и убираем при анмаунте
   useEffect(() => {
-    const formField = document.querySelector('.search-form__input')
-    const handleEnter = e => {
-      if (
-        e.key === 'Enter' &&
-        (searchQuery !== '' || isSaved) &&
-        formField === document.activeElement
-      ) {
-        onSubmit()
-      }
-    }
-    document.addEventListener('keydown', handleEnter)
+    document.addEventListener('keydown', onKeyDown)
     return () => {
-      document.removeEventListener('keydown', handleEnter)
+      document.removeEventListener('keydown', onKeyDown)
     }
   }, [])
+
   return (
     <section className='search-form'>
       <form className='search-form__form' onSubmit={onSubmit}>

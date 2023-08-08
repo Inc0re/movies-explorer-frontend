@@ -18,6 +18,7 @@ function Movies({
   handleSearchQueryChange,
   handleLoadMore,
   handleMovieBtnClick,
+  handleSearchOnKeyDown,
 }) {
   return (
     <main className='movies'>
@@ -28,6 +29,7 @@ function Movies({
         onSearchQueryChange={handleSearchQueryChange}
         searchQuery={searchQuery}
         isSaved={isSaved}
+        onKeyDown={handleSearchOnKeyDown}
       />
       <section>
         {currentState === 'loading' ? (
