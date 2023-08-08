@@ -88,6 +88,7 @@ function App() {
   }
 
   useEffect(() => {
+    if (loggedIn) {
     mainApi
       .getUserInfo()
       .then(res => {
@@ -99,6 +100,7 @@ function App() {
         console.log(err)
         setLoggedIn(false)
       })
+    }
   }, [loggedIn])
 
   return (
