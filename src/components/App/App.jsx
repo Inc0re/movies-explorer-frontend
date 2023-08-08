@@ -1,6 +1,6 @@
 // TODO: fix navigate to / even if user is authenticated
 import { useState, useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import NotFound from '../NotFound/NotFound'
 import Register from '../Register/Register'
@@ -14,6 +14,8 @@ import mainApi from '../../utils/MainApi'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
 
 function App() {
+  const navigate = useNavigate()
+
   const [apiError, setApiError] = useState('')
   const [loggedIn, setLoggedIn] = useState(true)
   const [currentUser, setCurrentUser] = useState({})
@@ -31,9 +33,15 @@ function App() {
   const handleRegister = data => {
     mainApi
       .register(data)
-      .then(res => {
-        setLoggedIn(true)
-        setApiError('')
+      .then(() => {
+        // авторизовать пользователя
+        handleLogin({
+          email: data.email,
+          password: data.password,
+        })
+      })
+      .then(() => {
+        navigate('/movies')
       })
       .catch(err => {
         console.log(err)
@@ -89,17 +97,17 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-    mainApi
-      .getUserInfo()
-      .then(res => {
-        setCurrentUser(res.data)
-        // console.log(res.data)
-        setLoggedIn(true)
-      })
-      .catch(err => {
-        console.log(err)
-        setLoggedIn(false)
-      })
+      mainApi
+        .getUserInfo()
+        .then(res => {
+          setCurrentUser(res.data)
+          // console.log(res.data)
+          setLoggedIn(true)
+        })
+        .catch(err => {
+          console.log(err)
+          setLoggedIn(false)
+        })
     }
   }, [loggedIn])
 
