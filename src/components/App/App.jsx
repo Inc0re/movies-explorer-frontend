@@ -54,6 +54,7 @@ function App() {
       .then(res => {
         setLoggedIn(true)
         setApiError('')
+        navigate('/movies')
       })
       .catch(err => {
         console.log(err)
