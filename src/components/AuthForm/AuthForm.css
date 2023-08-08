@@ -118,7 +118,6 @@
   .auth-form {
     margin-top: 56px;
     max-width: 81%;
-    min-height: 100vh;
   }
   .auth-form__logo {
     margin: 0 auto;
