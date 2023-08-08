@@ -92,7 +92,7 @@ function App() {
       .getUserInfo()
       .then(res => {
         setCurrentUser(res.data)
-        console.log(res.data)
+        // console.log(res.data)
         setLoggedIn(true)
       })
       .catch(err => {
