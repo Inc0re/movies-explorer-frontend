@@ -1,4 +1,3 @@
-// TODO: fix form reset after submit
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'

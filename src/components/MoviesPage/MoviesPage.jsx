@@ -238,8 +238,6 @@ function MoviesPage({ loggedIn, isSaved }) {
     }
   }
 
-  // TODO: добавить проверку на то, что фильм уже сохранен
-  // TODO: при очистке поисковой строки в сохраненных фильмах оставлять кнопку сабмита активной
   function handleMovieSave(m) {
     // console.log(m)
     if (m.isCardSaved) return

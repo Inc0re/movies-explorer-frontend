@@ -1,4 +1,3 @@
-// TODO: fix navigate to / even if user is authenticated
 import { useState, useEffect } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
