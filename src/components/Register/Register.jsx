@@ -21,6 +21,8 @@ function Register({ handleRegister, apiError, setApiError }) {
       minLength: 2,
       maxLength: 320,
       autocomplete: 'off',
+      pattern: /^\S+@\S+\.\S+$/,
+      title: 'Введите корректный email',
     },
     {
       name: 'password',
