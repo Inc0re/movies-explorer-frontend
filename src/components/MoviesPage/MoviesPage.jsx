@@ -10,6 +10,8 @@ import {
   updateMoviesIfSaved,
   filterByTitle,
   filterByDuration,
+  calcInitialMovies,
+  calcMoviesToLoad,
 } from '../../utils/moviesFilters'
 import { SHORT_MOVIE_DURATION } from '../../utils/constants'
 
@@ -20,9 +22,9 @@ function MoviesPage({ loggedIn, isSaved }) {
   const [movies, setMovies] = useState([])
   const [filteredMovies, setFilteredMovies] = useState([])
   const [displayedMovies, setDisplayedMovies] = useState([])
+  const [dMoviesCount, setDMoviesCount] = useState(0)
   const [tumblerState, setTumblerState] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [pagination, setPagination] = useState(0)
 
   // стейты для /saved-movies
   const [savedPageText, setSavedPageText] = useState('')
@@ -43,7 +45,7 @@ function MoviesPage({ loggedIn, isSaved }) {
       const newDisplayedMovies = loadMovies(
         displayedMovies,
         filteredMovies,
-        pagination
+        dMoviesCount
       )
       setDisplayedMovies(newDisplayedMovies)
     }
@@ -97,7 +99,7 @@ function MoviesPage({ loggedIn, isSaved }) {
       setMovies(savedSearch.movies)
       setSearchQuery(savedSearch.searchQuery)
       setTumblerState(savedSearch.tumblerState)
-      setPagination(savedSearch.pagination)
+      setDMoviesCount(savedSearch.dMoviesCount)
     }
 
     mainApi
@@ -117,7 +119,7 @@ function MoviesPage({ loggedIn, isSaved }) {
     if (currentState === 'loaded') {
       setLocalStorage()
     }
-  }, [currentState, movies, searchQuery, tumblerState, pagination])
+  }, [currentState, movies, searchQuery, tumblerState, dMoviesCount])
 
   // при изменении тумблера - фильтруем фильмы
   useEffect(() => {
@@ -130,15 +132,15 @@ function MoviesPage({ loggedIn, isSaved }) {
 
   // при изменении pagination - загружаем еще фильмы на страницу
   useEffect(() => {
-    if (pagination > 0) {
+    if (dMoviesCount > 0) {
       const newDisplayedMovies = loadMovies(
         displayedMovies,
         filteredMovies,
-        pagination
+        dMoviesCount
       )
       setDisplayedMovies(newDisplayedMovies)
     }
-  }, [pagination])
+  }, [dMoviesCount])
 
   // функция для маркировки сохраненных фильмов в списке всех фильмов
   function markSavedMovies() {
@@ -165,7 +167,7 @@ function MoviesPage({ loggedIn, isSaved }) {
           setCurrentState('')
         })
     } else {
-      setPagination(0)
+      setDMoviesCount(calcInitialMovies())
       filterMovies()
     }
   }
@@ -304,13 +306,13 @@ function MoviesPage({ loggedIn, isSaved }) {
         movies,
         searchQuery,
         tumblerState,
-        pagination,
+        dMoviesCount,
       })
     )
   }
 
   function handleLoadMore() {
-    setPagination(pagination + 1)
+    setDMoviesCount(dMoviesCount + calcMoviesToLoad())
   }
 
   return (

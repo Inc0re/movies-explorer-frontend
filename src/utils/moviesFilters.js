@@ -47,14 +47,20 @@ function calcMoviesToLoad() {
 }
 
 // функция подгрузки фильмов
-function loadMovies(displayedMovies = [], filteredMovies = [], pagination = 0) {
-  const moviesToLoad = calcInitialMovies() + calcMoviesToLoad() * pagination
-  // console.log([calcInitialMovies(), calcMoviesToLoad(), pagination, moviesToLoad])
+function loadMovies(
+  displayedMovies = [],
+  filteredMovies = [],
+  dMoviesCount = 0
+) {
   const moviesLeft = filteredMovies.length - displayedMovies.length
-  if (moviesLeft > calcMoviesToLoad()) {
-    return filteredMovies.slice(0, moviesToLoad)
+  if (dMoviesCount) {
+    return dMoviesCount < filteredMovies.length
+      ? filteredMovies.slice(0, dMoviesCount)
+      : filteredMovies
   } else {
-    return filteredMovies.slice(0, filteredMovies.length)
+    return moviesLeft > calcMoviesToLoad()
+      ? filteredMovies.slice(0, calcInitialMovies())
+      : filteredMovies
   }
 }
 
@@ -79,4 +85,5 @@ export {
   loadMovies,
   updateMoviesIfSaved,
   calcInitialMovies,
+  calcMoviesToLoad,
 }
