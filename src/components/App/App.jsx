@@ -158,6 +158,7 @@ function App() {
                 element={Register}
                 handleRegister={handleRegister}
                 apiError={apiError}
+                setApiError={setApiError}
               />
             }
           />
@@ -170,6 +171,7 @@ function App() {
                 element={Login}
                 handleLogin={handleLogin}
                 apiError={apiError}
+                setApiError={setApiError}
               />
             }
           />

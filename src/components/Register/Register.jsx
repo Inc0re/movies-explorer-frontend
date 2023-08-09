@@ -1,6 +1,6 @@
 import AuthForm from '../AuthForm/AuthForm'
 
-function Register({ handleRegister, apiError }) {
+function Register({ handleRegister, apiError, setApiError }) {
   const fields = [
     {
       name: 'name',
@@ -41,6 +41,7 @@ function Register({ handleRegister, apiError }) {
       type='register'
       fields={fields}
       requestError={apiError}
+      setApiError={setApiError}
     />
   )
 }

@@ -1,9 +1,17 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import useFormAndValidation from '../../hooks/useFormAndValidation'
 import './AuthForm.css'
 
-function AuthForm({ title, btnText, onSubmit, type, fields, requestError }) {
+function AuthForm({
+  title,
+  btnText,
+  onSubmit,
+  type,
+  fields,
+  requestError,
+  setApiError,
+}) {
   const params =
     type === 'register'
       ? {
@@ -17,6 +25,10 @@ function AuthForm({ title, btnText, onSubmit, type, fields, requestError }) {
           linkTo: '/signup',
         }
   const { values, handleChange, errors, isValid } = useFormAndValidation()
+
+  useEffect(() => {
+    setApiError('')
+  }, [])
 
   function handleSubmit(e) {
     e.preventDefault()
