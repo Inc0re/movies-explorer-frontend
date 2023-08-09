@@ -10,6 +10,7 @@ import {
   filterByTitle,
   filterByDuration,
 } from '../../utils/moviesFilters'
+import { SHORT_MOVIE_DURATION } from '../../utils/constants'
 
 function MoviesPage({ loggedIn, isSaved }) {
   // стейты для /movies
@@ -175,7 +176,7 @@ function MoviesPage({ loggedIn, isSaved }) {
   function filterMovies(isForSaved = false) {
     const title = isForSaved ? savedSearchQuery : searchQuery
     const tumbler = isForSaved ? savedTumblerState : tumblerState
-    const duration = tumbler ? 40 : 0
+    const duration = tumbler ? SHORT_MOVIE_DURATION : 0
     const filteredSetter = isForSaved
       ? setSavedFilteredMovies
       : setFilteredMovies
