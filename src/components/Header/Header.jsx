@@ -21,6 +21,7 @@ function Header({ loggedIn, onBurgerClick }) {
 
   useEffect(() => {
     setCurrentPage(location.pathname)
+    setIsBurgerMenuOpen(false)
   }, [location])
 
   return (
