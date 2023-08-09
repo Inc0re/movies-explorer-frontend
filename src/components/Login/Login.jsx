@@ -1,4 +1,6 @@
 import AuthForm from '../AuthForm/AuthForm'
+import { EMAIL_REGEXP } from '../../utils/constants'
+
 
 function Login({ handleLogin, apiError, setApiError }) {
   const fields = [
@@ -9,6 +11,8 @@ function Login({ handleLogin, apiError, setApiError }) {
       isRequired: true,
       minLength: 2,
       maxLength: 320,
+      pattern: EMAIL_REGEXP,
+      title: 'Введите корректный email',
     },
     {
       name: 'password',

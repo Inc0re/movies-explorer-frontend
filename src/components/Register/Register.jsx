@@ -1,4 +1,5 @@
 import AuthForm from '../AuthForm/AuthForm'
+import { EMAIL_REGEXP, NAME_REGEXP } from '../../utils/constants'
 
 function Register({ handleRegister, apiError, setApiError }) {
   const fields = [
@@ -10,7 +11,7 @@ function Register({ handleRegister, apiError, setApiError }) {
       minLength: 2,
       maxLength: 30,
       autocomplete: 'off',
-      pattern: /^[\s\-A-Za-zА-Яа-яЁё]+$/,
+      pattern: NAME_REGEXP,
       title: 'Имя может содержать только буквы, дефисы и пробелы',
     },
     {
@@ -21,7 +22,7 @@ function Register({ handleRegister, apiError, setApiError }) {
       minLength: 2,
       maxLength: 320,
       autocomplete: 'off',
-      pattern: /^\S+@\S+\.\S+$/,
+      pattern: EMAIL_REGEXP,
       title: 'Введите корректный email',
     },
     {
