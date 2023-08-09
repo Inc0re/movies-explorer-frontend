@@ -16,6 +16,7 @@ function App() {
   const navigate = useNavigate()
 
   const [apiError, setApiError] = useState('')
+  const [isWaitingRes, setIsWaitingRes] = useState(false)
   const [loggedIn, setLoggedIn] = useState(true)
   const [currentUser, setCurrentUser] = useState({})
 
@@ -30,6 +31,7 @@ function App() {
   }
 
   const handleRegister = data => {
+    setIsWaitingRes(true)
     mainApi
       .register(data)
       .then(() => {
@@ -46,9 +48,13 @@ function App() {
         console.log(err)
         setApiError(err.message)
       })
+      .finally(() => {
+        setIsWaitingRes(false)
+      })
   }
 
   const handleLogin = data => {
+    setIsWaitingRes(true)
     mainApi
       .login(data)
       .then(res => {
@@ -60,9 +66,13 @@ function App() {
         console.log(err)
         setApiError(err.message)
       })
+      .finally(() => {
+        setIsWaitingRes(false)
+      })
   }
 
   const handleLogout = () => {
+    setIsWaitingRes(true)
     mainApi
       .logout()
       .then(res => {
@@ -73,11 +83,15 @@ function App() {
         console.log(err)
         setApiError(err.message)
       })
+      .finally(() => {
+        setIsWaitingRes(false)
+      })
 
     localStorage.removeItem('savedSearch')
   }
 
   const handleProfileUpdate = data => {
+    setIsWaitingRes(true)
     mainApi
       .updateUserInfo(data)
       .then(res => {
@@ -92,6 +106,9 @@ function App() {
             : err.message
         )
         console.log(err)
+      })
+      .finally(() => {
+        setIsWaitingRes(false)
       })
   }
 
@@ -123,6 +140,8 @@ function App() {
                 path='/'
                 loggedIn={loggedIn}
                 element={MoviesPage}
+                isWaitingRes={isWaitingRes}
+                setIsWaitingRes={setIsWaitingRes}
               />
             }
           />
@@ -134,6 +153,8 @@ function App() {
                 loggedIn={loggedIn}
                 element={MoviesPage}
                 isSaved={true}
+                isWaitingRes={isWaitingRes}
+                setIsWaitingRes={setIsWaitingRes}
               />
             }
           />
@@ -146,6 +167,7 @@ function App() {
                 element={ProfilePage}
                 onLogout={handleLogout}
                 onProfileUpdate={handleProfileUpdate}
+                isWaitingRes={isWaitingRes}
               />
             }
           />
@@ -159,6 +181,7 @@ function App() {
                 handleRegister={handleRegister}
                 apiError={apiError}
                 setApiError={setApiError}
+                isWaitingRes={isWaitingRes}
               />
             }
           />
@@ -172,6 +195,7 @@ function App() {
                 handleLogin={handleLogin}
                 apiError={apiError}
                 setApiError={setApiError}
+                isWaitingRes={isWaitingRes}
               />
             }
           />

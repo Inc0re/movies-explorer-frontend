@@ -11,6 +11,7 @@ function SearchForm({
   tumblerState,
   searchQuery,
   isSaved,
+  isWaitingRes,
 }) {
   const [error, setError] = useState('')
 
@@ -47,11 +48,12 @@ function SearchForm({
             value={searchQuery}
             required={!isSaved}
             title='Нужно ввести ключевое слово'
+            disabled={isWaitingRes}
           />
           <button
             className='search-form__button'
             type='submit'
-            // disabled={isSaved ? false : searchQuery === ''}
+            disabled={isWaitingRes}
           />
         </fieldset>
         {error && <p className='search-form__error'>{error}</p>}

@@ -1,7 +1,7 @@
 import AuthForm from '../AuthForm/AuthForm'
 import { EMAIL_REGEXP, NAME_REGEXP } from '../../utils/constants'
 
-function Register({ handleRegister, apiError, setApiError }) {
+function Register({ handleRegister, apiError, setApiError, isWaitingRes }) {
   const fields = [
     {
       name: 'name',
@@ -45,6 +45,7 @@ function Register({ handleRegister, apiError, setApiError }) {
       fields={fields}
       requestError={apiError}
       setApiError={setApiError}
+      isWaitingRes={isWaitingRes}
     />
   )
 }

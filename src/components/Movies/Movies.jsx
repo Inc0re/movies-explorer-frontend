@@ -19,6 +19,7 @@ function Movies({
   handleLoadMore,
   handleMovieBtnClick,
   handleSearchOnKeyDown,
+  isWaitingRes,
 }) {
   return (
     <main className='movies'>
@@ -30,6 +31,7 @@ function Movies({
         searchQuery={searchQuery}
         isSaved={isSaved}
         onKeyDown={handleSearchOnKeyDown}
+        isWaitingRes={isWaitingRes}
       />
       <section>
         {currentState === 'loading' ? (

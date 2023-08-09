@@ -4,7 +4,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import useFormAndValidation from '../../hooks/useFormAndValidation'
 import './Profile.css'
 
-function Profile({ onProfileUpdate, onLogout, requestError }) {
+function Profile({ onProfileUpdate, onLogout, isWaitingRes }) {
   const currentUser = useContext(CurrentUserContext)
 
   const { values, setValues, handleChange, errors, isValid, resetForm } =
@@ -59,6 +59,7 @@ function Profile({ onProfileUpdate, onLogout, requestError }) {
               pattern='^[\s\-A-Za-zА-Яа-яЁё]+$'
               title='Имя может содержать только буквы, дефисы и пробелы'
               required
+              disabled={isWaitingRes}
             />
             {errors.name && <p className='profile__error'>{errors.name}</p>}
           </div>
@@ -75,6 +76,7 @@ function Profile({ onProfileUpdate, onLogout, requestError }) {
               value={values.email || ''}
               onChange={handleChange}
               required
+              disabled={isWaitingRes}
             />
             {errors.email && <p className='profile__error'>{errors.email}</p>}
           </div>

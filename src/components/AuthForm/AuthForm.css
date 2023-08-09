@@ -75,6 +75,11 @@
   color: #ee3465;
 }
 
+.auth-form__field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .auth-form__error {
   margin: 0;
   color: #ee3465;

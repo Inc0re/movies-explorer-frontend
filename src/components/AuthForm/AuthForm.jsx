@@ -12,6 +12,7 @@ function AuthForm({
   fields,
   requestError,
   setApiError,
+  isWaitingRes,
 }) {
   const params =
     type === 'register'
@@ -60,6 +61,7 @@ function AuthForm({
                 autoComplete={field.autoComplete}
                 pattern={field.pattern && field.pattern.source}
                 title={field.title}
+                disabled={isWaitingRes}
               />
               {errors[field.name] && (
                 <p className='auth-form__error'>{errors[field.name]}</p>
@@ -73,7 +75,7 @@ function AuthForm({
               (type === 'login' ? ' auth-form__btn_margin_xl' : '')
             }
             type='submit'
-            disabled={!isValid}
+            disabled={!isValid || isWaitingRes}
           >
             {btnText}
           </button>

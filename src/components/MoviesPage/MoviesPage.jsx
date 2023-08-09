@@ -15,7 +15,7 @@ import {
 } from '../../utils/moviesFilters'
 import { SHORT_MOVIE_DURATION } from '../../utils/constants'
 
-function MoviesPage({ loggedIn, isSaved }) {
+function MoviesPage({ loggedIn, isSaved, isWaitingRes, setIsWaitingRes }) {
   // стейты для /movies
   const [pageText, setPageText] = useState('')
   const [currentState, setCurrentState] = useState('')
@@ -153,6 +153,7 @@ function MoviesPage({ loggedIn, isSaved }) {
   function searchMovies() {
     if (!movies.length) {
       setCurrentState('loading')
+      setIsWaitingRes(true)
       moviesApi
         .getMovies()
         .then(res => {
@@ -165,6 +166,9 @@ function MoviesPage({ loggedIn, isSaved }) {
             'Во время запроса произошла ошибка. Попробуйте ещё раз =('
           )
           setCurrentState('')
+        })
+        .finally(() => {
+          setIsWaitingRes(false)
         })
     } else {
       setDMoviesCount(calcInitialMovies())
@@ -348,6 +352,7 @@ function MoviesPage({ loggedIn, isSaved }) {
           handleLoadMore={handleLoadMore}
           handleMovieBtnClick={handleMovieBtnClick}
           handleSearchOnKeyDown={handleSearchOnKeyDown}
+          isWaitingRes={isWaitingRes}
         />
       )}
 

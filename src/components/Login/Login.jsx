@@ -2,7 +2,7 @@ import AuthForm from '../AuthForm/AuthForm'
 import { EMAIL_REGEXP } from '../../utils/constants'
 
 
-function Login({ handleLogin, apiError, setApiError }) {
+function Login({ handleLogin, apiError, setApiError, isWaitingRes }) {
   const fields = [
     {
       name: 'email',
@@ -32,6 +32,7 @@ function Login({ handleLogin, apiError, setApiError }) {
       fields={fields}
       requestError={apiError}
       setApiError={setApiError}
+      isWaitingRes={isWaitingRes}
     />
   )
 }

@@ -73,6 +73,11 @@
   color: #ee3465;
 }
 
+.profile__field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .profile__buttons {
   display: flex;
   margin-top: 201px;
