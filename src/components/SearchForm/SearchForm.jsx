@@ -30,7 +30,6 @@ function SearchForm({
     return () => {
       document.removeEventListener('keydown', onKeyDown)
     }
-    setError('')
   }, [])
 
   useEffect(() => {
