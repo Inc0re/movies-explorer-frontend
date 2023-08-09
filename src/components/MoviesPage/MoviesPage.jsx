@@ -159,6 +159,7 @@ function MoviesPage({ loggedIn, isSaved, isWaitingRes, setIsWaitingRes }) {
         .then(res => {
           const markedMovies = updateMoviesIfSaved(res, savedMovies)
           setMovies(markedMovies)
+          setDMoviesCount(calcInitialMovies())
         })
         .catch(err => {
           console.log(err)
