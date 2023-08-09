@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import useFormAndValidation from '../../hooks/useFormAndValidation'
