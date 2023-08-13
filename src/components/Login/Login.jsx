@@ -1,6 +1,8 @@
 import AuthForm from '../AuthForm/AuthForm'
+import { EMAIL_REGEXP } from '../../utils/constants'
 
-function Login({ handleLogin }) {
+
+function Login({ handleLogin, apiError, setApiError, isWaitingRes }) {
   const fields = [
     {
       name: 'email',
@@ -9,6 +11,8 @@ function Login({ handleLogin }) {
       isRequired: true,
       minLength: 2,
       maxLength: 320,
+      pattern: EMAIL_REGEXP,
+      title: 'Введите корректный email',
     },
     {
       name: 'password',
@@ -26,7 +30,9 @@ function Login({ handleLogin }) {
       onSubmit={handleLogin}
       type='login'
       fields={fields}
-      error='Что-то пошло не так...'
+      requestError={apiError}
+      setApiError={setApiError}
+      isWaitingRes={isWaitingRes}
     />
   )
 }

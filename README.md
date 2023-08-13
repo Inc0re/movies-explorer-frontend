@@ -2,6 +2,10 @@
 
 Фронтенд часть проекта Moviex Explorer
 
+Деплой проекта: [https://pandex.team](https://pandex.team/)
+
+Ссылка на pull request: [https://github.com/Inc0re/movies-explorer-frontend/pull/2](https://github.com/Inc0re/movies-explorer-frontend/pull/2)
+
 Ссылка на макет Figma: [https://disk.yandex.kz/d/Ir0gkv6OkSWd3g](https://disk.yandex.kz/d/Ir0gkv6OkSWd3g)
 
 Ссылка на репозиторий: [https://github.com/Inc0re/movies-explorer-frontend](https://github.com/Inc0re/movies-explorer-frontend)

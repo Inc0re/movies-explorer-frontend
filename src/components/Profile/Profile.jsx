@@ -1,28 +1,47 @@
-import { useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import useFormAndValidation from '../../hooks/useFormAndValidation'
 import './Profile.css'
 
-function Profile() {
-  const [user, setUser] = useState({
-    name: 'Виталий',
-    email: 'test@ya.ru',
-  })
+function Profile({ onProfileUpdate, onLogout, isWaitingRes }) {
+  const currentUser = useContext(CurrentUserContext)
+
+  const { values, setValues, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation()
+
+  useEffect(() => {
+    if (currentUser.name) {
+      setValues({
+        name: currentUser.name,
+        email: currentUser.email,
+      })
+    }
+  }, [currentUser])
 
   const navigate = useNavigate()
 
   const handleLogout = () => {
+    onLogout()
     navigate('/')
   }
 
-  const handleChange = e => {
-    const { name, value } = e.target
-    setUser({ ...user, [name]: value })
+  const handleSubmit = e => {
+    e.preventDefault()
+    onProfileUpdate(values)
+    resetForm(
+      {
+        name: values.name,
+        email: values.email,
+      },
+    )
   }
 
   return (
     <main>
       <section className='profile'>
-        <h1 className='profile__title'>Привет, {user.name}!</h1>
+        <h1 className='profile__title'>Привет, {values.name || ''}!</h1>
         <form className='profile__form'>
           <div className='profile__row'>
             <label className='profile__label' htmlFor='name'>
@@ -34,12 +53,16 @@ function Profile() {
               name='name'
               id='name'
               placeholder='Иван'
-              value={user.name}
+              value={values.name || ''}
               onChange={handleChange}
               minLength={2}
               maxLength={30}
+              pattern='^[\s\-A-Za-zА-Яа-яЁё]+$'
+              title='Имя может содержать только буквы, дефисы и пробелы'
               required
+              disabled={isWaitingRes}
             />
+            {errors.name && <p className='profile__error'>{errors.name}</p>}
           </div>
           <div className='profile__row'>
             <label className='profile__label' htmlFor='email'>
@@ -51,13 +74,24 @@ function Profile() {
               name='email'
               id='email'
               placeholder='example@ya.ru'
-              value={user.email}
+              value={values.email || ''}
               onChange={handleChange}
               required
+              disabled={isWaitingRes}
             />
+            {errors.email && <p className='profile__error'>{errors.email}</p>}
           </div>
           <div className='profile__buttons'>
-            <button className='profile__button' type='submit'>
+            <button
+              className='profile__button'
+              type='submit'
+              disabled={
+                !isValid ||
+                (values.name === currentUser.name &&
+                  values.email === currentUser.email)
+              }
+              onClick={handleSubmit}
+            >
               Редактировать
             </button>
             <button

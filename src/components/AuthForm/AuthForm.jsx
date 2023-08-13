@@ -1,9 +1,19 @@
-import React, { Fragment } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import useForm from '../../hooks/useForm'
+import useFormAndValidation from '../../hooks/useFormAndValidation'
 import './AuthForm.css'
 
-function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
+function AuthForm({
+  title,
+  btnText,
+  onSubmit,
+  type,
+  fields,
+  requestError,
+  setApiError,
+  isWaitingRes,
+}) {
   const params =
     type === 'register'
       ? {
@@ -16,7 +26,11 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
           linkText: 'Регистрация',
           linkTo: '/signup',
         }
-  const { values, handleChange } = useForm({})
+  const { values, handleChange, errors, isValid } = useFormAndValidation()
+
+  useEffect(() => {
+    setApiError('')
+  }, [])
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -44,16 +58,24 @@ function AuthForm({ title, btnText, onSubmit, type, fields, error }) {
                 required={field.isRequired}
                 minLength={field.minLength}
                 maxLength={field.maxLength}
+                autoComplete={field.autoComplete}
+                pattern={field.pattern && field.pattern.source}
+                title={field.title}
+                disabled={isWaitingRes}
               />
+              {errors[field.name] && (
+                <p className='auth-form__error'>{errors[field.name]}</p>
+              )}
             </Fragment>
           ))}
-          {error && <p className='auth-form__error'>{error}</p>}
+          {requestError && <p className='auth-form__error'>{requestError}</p>}
           <button
             className={
               'auth-form__btn' +
               (type === 'login' ? ' auth-form__btn_margin_xl' : '')
             }
             type='submit'
+            disabled={!isValid || isWaitingRes}
           >
             {btnText}
           </button>

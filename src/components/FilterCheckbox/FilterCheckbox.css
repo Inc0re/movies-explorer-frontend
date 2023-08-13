@@ -9,6 +9,12 @@
   display: none;
 }
 
+.filter-checkbox__input:disabled + .filter-checkbox__label,
+.filter-checkbox__input:disabled ~ .filter-checkbox__text {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .filter-checkbox__label {
   grid-area: button;
   cursor: pointer;

@@ -1,6 +1,7 @@
 import AuthForm from '../AuthForm/AuthForm'
+import { EMAIL_REGEXP, NAME_REGEXP } from '../../utils/constants'
 
-function Register({ handleRegister }) {
+function Register({ handleRegister, apiError, setApiError, isWaitingRes }) {
   const fields = [
     {
       name: 'name',
@@ -9,6 +10,9 @@ function Register({ handleRegister }) {
       isRequired: true,
       minLength: 2,
       maxLength: 30,
+      autocomplete: 'off',
+      pattern: NAME_REGEXP,
+      title: 'Имя может содержать только буквы, дефисы и пробелы',
     },
     {
       name: 'email',
@@ -17,6 +21,9 @@ function Register({ handleRegister }) {
       isRequired: true,
       minLength: 2,
       maxLength: 320,
+      autocomplete: 'off',
+      pattern: EMAIL_REGEXP,
+      title: 'Введите корректный email',
     },
     {
       name: 'password',
@@ -25,8 +32,10 @@ function Register({ handleRegister }) {
       isRequired: true,
       minLength: 8,
       maxLength: 30,
+      autocomplete: 'off',
     },
   ]
+
   return (
     <AuthForm
       title='Добро пожаловать!'
@@ -34,7 +43,9 @@ function Register({ handleRegister }) {
       onSubmit={handleRegister}
       type='register'
       fields={fields}
-      error='Что-то пошло не так...'
+      requestError={apiError}
+      setApiError={setApiError}
+      isWaitingRes={isWaitingRes}
     />
   )
 }

@@ -1,18 +1,56 @@
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Pagination from '../Pagination/Pagination'
-// import Preloader from '../Preloader/Preloader'
+import Preloader from '../Preloader/Preloader'
 import SearchForm from '../SearchForm/SearchForm'
+
 import './Movies.css'
 
-function Movies({ isSaved }) {
+function Movies({
+  isSaved,
+  currentState,
+  filteredMovies,
+  displayedMovies,
+  searchQuery,
+  tumblerState,
+  pageText,
+  handleSearch,
+  handleTumblerSwitch,
+  handleSearchQueryChange,
+  handleLoadMore,
+  handleMovieBtnClick,
+  handleSearchOnKeyDown,
+  isWaitingRes,
+}) {
   return (
     <main className='movies'>
-      <SearchForm />
+      <SearchForm
+        onSubmit={handleSearch}
+        onTumblerSwitch={handleTumblerSwitch}
+        tumblerState={tumblerState}
+        onSearchQueryChange={handleSearchQueryChange}
+        searchQuery={searchQuery}
+        isSaved={isSaved}
+        onKeyDown={handleSearchOnKeyDown}
+        isWaitingRes={isWaitingRes}
+      />
       <section>
-        <MoviesCardList isSaved={isSaved} />
+        {currentState === 'loading' ? (
+          <Preloader />
+        ) : currentState === 'loaded' ? (
+          <MoviesCardList
+            isSaved={isSaved}
+            cards={displayedMovies}
+            onSave={handleMovieBtnClick}
+          />
+        ) : (
+          <p className='movies__text'>{pageText}</p>
+        )}
       </section>
-      {/* <Preloader/> */}
-      {!isSaved && <Pagination />}
+      {!isSaved &&
+        currentState === 'loaded' &&
+        filteredMovies.length > displayedMovies.length && (
+          <Pagination onLoadMore={handleLoadMore} />
+        )}
     </main>
   )
 }

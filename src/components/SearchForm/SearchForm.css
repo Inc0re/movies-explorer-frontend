@@ -63,6 +63,18 @@
   transform: scale(1.1);
 }
 
+.search-form__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.search-form__error {
+  margin: 0 0 32px;
+  color: #ee3465;
+  font-size: 20px;
+}
+
 @media screen and (max-width: 850px) {
   .search-form {
     padding-bottom: 133px;
@@ -84,5 +96,9 @@
 
   .search-form__fieldset {
     margin-bottom: 40px;
+  }
+  .search-form__error {
+    font-size: 16px;
+    text-align: center;
   }
 }
